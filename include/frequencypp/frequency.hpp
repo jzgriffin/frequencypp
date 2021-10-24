@@ -34,6 +34,34 @@ struct frequency;
 
 // Types needed to implement frequency, which may refer to the above forward declaration
 
+namespace frequencypp {
+namespace detail {
+
+template<typename T>
+struct is_frequency : std::false_type
+{};
+
+template<typename Rep, typename Period>
+struct is_frequency<frequency<Rep, Period>> : std::true_type
+{};
+
+template<typename T>
+constexpr bool is_frequency_v = is_frequency<T>::value;
+
+template<typename T>
+struct is_ratio : std::false_type
+{};
+
+template<std::intmax_t Num, std::intmax_t Den>
+struct is_ratio<std::ratio<Num, Den>> : std::true_type
+{};
+
+template<typename T>
+constexpr bool is_ratio_v = is_ratio<T>::value;
+
+} // namespace detail
+} // namespace frequencypp
+
 /// Specialization of std::common_type for \ref frequencypp::frequency
 template<typename Rep1, typename Period1, typename Rep2, typename Period2>
 struct std::common_type<frequencypp::frequency<Rep1, Period1>,
@@ -81,6 +109,10 @@ public:
     using rep = Rep;
     /// Ratio representing the tick period (i.e. the number of hertz fractions per tick)
     using period = typename Period::type;
+
+    static_assert(!detail::is_frequency_v<rep>, "rep cannot be a frequency");
+    static_assert(detail::is_ratio_v<period>, "period must be a ratio");
+    static_assert(period::num > 0, "period must be positive");
 };
 
 } // namespace frequencypp

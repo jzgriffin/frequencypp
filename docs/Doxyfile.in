@@ -40,3 +40,6 @@ M_SHOW_UNDOCUMENTED = YES
 
 # Do not require \brief at the beginning of multiline C++ comments
 MULTILINE_CPP_IS_BRIEF = YES
+
+# Hide the details namespace
+EXCLUDE_SYMBOLS = detail
