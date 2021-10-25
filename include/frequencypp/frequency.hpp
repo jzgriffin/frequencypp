@@ -19,6 +19,7 @@
 #ifndef FREQUENCYPP_FREQUENCY_HPP
 #define FREQUENCYPP_FREQUENCY_HPP
 
+#include <chrono>
 #include <numeric>
 #include <ratio>
 #include <type_traits>
@@ -104,6 +105,8 @@ namespace frequencypp {
 template<typename Rep, typename Period>
 struct frequency
 {
+    Rep count_;
+
 public:
     /// Arithmetic type representing the number of ticks
     using rep = Rep;
@@ -113,6 +116,38 @@ public:
     static_assert(!detail::is_frequency_v<rep>, "rep cannot be a frequency");
     static_assert(detail::is_ratio_v<period>, "period must be a ratio");
     static_assert(period::num > 0, "period must be positive");
+
+    /// Default-construct the frequency
+    constexpr frequency() = default;
+
+    /// Copy-construct the frequency
+    frequency(const frequency&) = default;
+
+    /// Construct the frequency with \p r ticks
+    ///
+    /// \tparam Rep2 arithmetic type representing the number of ticks
+    /// \param r tick count
+    template<typename Rep2,
+        typename = std::enable_if_t<
+            std::is_convertible_v<const Rep2&,
+                rep> && (std::chrono::treat_as_floating_point_v<rep> || !std::chrono::treat_as_floating_point_v<Rep2>)>>
+    constexpr explicit frequency(const Rep2& r)
+        : count_(static_cast<rep>(r))
+    {}
+
+    /// Destruct the frequency
+    ~frequency() = default;
+
+    /// Copy-assign the frequency
+    auto operator=(const frequency&) -> frequency& = default;
+
+    /// Get the number of ticks
+    ///
+    /// \return number of ticks
+    constexpr auto count() const -> rep
+    {
+        return count_;
+    }
 };
 
 } // namespace frequencypp
