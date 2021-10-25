@@ -20,6 +20,7 @@
 #define FREQUENCYPP_FREQUENCY_HPP
 
 #include <chrono>
+#include <cstdint>
 #include <limits>
 #include <numeric>
 #include <ratio>
@@ -223,6 +224,18 @@ public:
         return count_;
     }
 };
+
+// SI units
+
+using nanohertz = frequency<std::int64_t, std::nano>; ///< Frequency specified in nanohertz (nHz)
+using microhertz = frequency<std::int64_t, std::micro>; ///< Frequency specified in microhertz (uHz)
+using millihertz = frequency<std::int64_t, std::milli>; ///< Frequency specified in millihertz (mHz)
+using hertz = frequency<std::int64_t>; ///< Frequency specified in hertz (Hz)
+using kilohertz = frequency<std::int64_t, std::kilo>; ///< Frequency specified in kilohertz (KHz)
+using megahertz = frequency<std::int64_t, std::mega>; ///< Frequency specified in megahertz (MHz)
+using gigahertz = frequency<std::int32_t, std::giga>; ///< Frequency specified in gigahertz (GHz)
+using terahertz = frequency<std::int32_t, std::tera>; ///< Frequency specified in terahertz (THz)
+using petahertz = frequency<std::int16_t, std::peta>; ///< Frequency specified in petahertz (PHz)
 
 } // namespace frequencypp
 

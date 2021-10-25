@@ -18,6 +18,7 @@ add_executable(frequencypp_test
     source/common_type.cpp
     source/constructor.cpp
     source/frequencypp_test.cpp
+    source/si.cpp
     source/type.cpp
     source/values.cpp
 )
