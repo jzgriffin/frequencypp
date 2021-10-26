@@ -237,6 +237,172 @@ using gigahertz = frequency<std::int32_t, std::giga>; ///< Frequency specified i
 using terahertz = frequency<std::int32_t, std::tera>; ///< Frequency specified in terahertz (THz)
 using petahertz = frequency<std::int16_t, std::peta>; ///< Frequency specified in petahertz (PHz)
 
+inline namespace literals {
+
+/// Literal suffix for frequencies of type \ref frequencypp::nanohertz
+///
+/// \param r tick count
+/// \return nanohertz with tick count \p r
+constexpr auto operator"" _nHz(unsigned long long r) -> nanohertz
+{
+    return nanohertz{r};
+}
+
+/// Literal suffix for frequencies representing non-integer nanohertz
+///
+/// \param r tick count
+/// \return nanohertz with tick count \p r
+constexpr auto operator"" _nHz(long double r) -> frequency<long double, std::nano>
+{
+    return frequency<long double, std::nano>{r};
+}
+
+/// Literal suffix for frequencies of type \ref frequencypp::microhertz
+///
+/// \param r tick count
+/// \return microhertz with tick count \p r
+constexpr auto operator"" _uHz(unsigned long long r) -> microhertz
+{
+    return microhertz{r};
+}
+
+/// Literal suffix for frequencies representing non-integer microhertz
+///
+/// \param r tick count
+/// \return microhertz with tick count \p r
+constexpr auto operator"" _uHz(long double r) -> frequency<long double, std::micro>
+{
+    return frequency<long double, std::micro>{r};
+}
+
+/// Literal suffix for frequencies of type \ref frequencypp::millihertz
+///
+/// \param r tick count
+/// \return millihertz with tick count \p r
+constexpr auto operator"" _mHz(unsigned long long r) -> millihertz
+{
+    return millihertz{r};
+}
+
+/// Literal suffix for frequencies representing non-integer millihertz
+///
+/// \param r tick count
+/// \return millihertz with tick count \p r
+constexpr auto operator"" _mHz(long double r) -> frequency<long double, std::milli>
+{
+    return frequency<long double, std::milli>{r};
+}
+
+/// Literal suffix for frequencies of type \ref frequencypp::hertz
+///
+/// \param r tick count
+/// \return millihertz with tick count \p r
+constexpr auto operator"" _Hz(unsigned long long r) -> hertz
+{
+    return hertz{r};
+}
+
+/// Literal suffix for frequencies representing non-integer hertz
+///
+/// \param r tick count
+/// \return millihertz with tick count \p r
+constexpr auto operator"" _Hz(long double r) -> frequency<long double>
+{
+    return frequency<long double>{r};
+}
+
+/// Literal suffix for frequencies of type \ref frequencypp::kilohertz
+///
+/// \param r tick count
+/// \return kilohertz with tick count \p r
+constexpr auto operator"" _KHz(unsigned long long r) -> kilohertz
+{
+    return kilohertz{r};
+}
+
+/// Literal suffix for frequencies representing non-integer kilohertz
+///
+/// \param r tick count
+/// \return kilohertz with tick count \p r
+constexpr auto operator"" _KHz(long double r) -> frequency<long double, std::kilo>
+{
+    return frequency<long double, std::kilo>{r};
+}
+
+/// Literal suffix for frequencies of type \ref frequencypp::megahertz
+///
+/// \param r tick count
+/// \return megahertz with tick count \p r
+constexpr auto operator"" _MHz(unsigned long long r) -> megahertz
+{
+    return megahertz{r};
+}
+
+/// Literal suffix for frequencies representing non-integer megahertz
+///
+/// \param r tick count
+/// \return megahertz with tick count \p r
+constexpr auto operator"" _MHz(long double r) -> frequency<long double, std::mega>
+{
+    return frequency<long double, std::mega>{r};
+}
+
+/// Literal suffix for frequencies of type \ref frequencypp::gigahertz
+///
+/// \param r tick count
+/// \return gigahertz with tick count \p r
+constexpr auto operator"" _GHz(unsigned long long r) -> gigahertz
+{
+    return gigahertz{r};
+}
+
+/// Literal suffix for frequencies representing non-integer gigahertz
+///
+/// \param r tick count
+/// \return gigahertz with tick count \p r
+constexpr auto operator"" _GHz(long double r) -> frequency<long double, std::giga>
+{
+    return frequency<long double, std::giga>{r};
+}
+
+/// Literal suffix for frequencies of type \ref frequencypp::terahertz
+///
+/// \param r tick count
+/// \return terahertz with tick count \p r
+constexpr auto operator"" _THz(unsigned long long r) -> terahertz
+{
+    return terahertz{r};
+}
+
+/// Literal suffix for frequencies representing non-integer terahertz
+///
+/// \param r tick count
+/// \return terahertz with tick count \p r
+constexpr auto operator"" _THz(long double r) -> frequency<long double, std::tera>
+{
+    return frequency<long double, std::tera>{r};
+}
+
+/// Literal suffix for frequencies of type \ref frequencypp::petahertz
+///
+/// \param r tick count
+/// \return petahertz with tick count \p r
+constexpr auto operator"" _PHz(unsigned long long r) -> petahertz
+{
+    return petahertz{r};
+}
+
+/// Literal suffix for frequencies representing non-integer petahertz
+///
+/// \param r tick count
+/// \return petahertz with tick count \p r
+constexpr auto operator"" _PHz(long double r) -> frequency<long double, std::peta>
+{
+    return frequency<long double, std::peta>{r};
+}
+
+} // namespace literals
+
 } // namespace frequencypp
 
 #endif // FREQUENCYPP_FREQUENCY_HPP
