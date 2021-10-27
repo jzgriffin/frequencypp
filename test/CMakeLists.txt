@@ -17,6 +17,7 @@ include(Catch)
 add_executable(frequencypp_test
     source/cast.cpp
     source/common_type.cpp
+    source/comparison.cpp
     source/constructor.cpp
     source/frequencypp_test.cpp
     source/si.cpp

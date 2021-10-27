@@ -262,6 +262,128 @@ public:
     }
 };
 
+// Comparison
+
+/// Determine whether the left-hand frequency \p lhs is equal to the right-hand frequency \p rhs
+///
+/// The comparison is made using the common type of \p lhs and \p rhs.
+///
+/// \tparam Rep1 arithmetic type representing the number of ticks for \p lhs
+/// \tparam Period1 ratio representing the tick period for \p lhs
+/// \tparam Rep2 arithmetic type representing the number of ticks for \p rhs
+/// \tparam Period2 ratio representing the tick period for \p rhs
+/// \param lhs left-hand frequency to compare
+/// \param rhs right-hand frequency to compare
+/// \retval true if \p lhs and \p rhs represent the same frequency
+/// \retval false if \p lhs and \p rhs represent different frequencies
+template<typename Rep1, typename Period1, typename Rep2, typename Period2>
+constexpr auto operator==(const frequency<Rep1, Period1>& lhs, const frequency<Rep2, Period2>& rhs)
+    -> bool
+{
+    using ct = std::common_type_t<std::decay_t<decltype(lhs)>, std::decay_t<decltype(rhs)>>;
+    return ct{lhs}.count() == ct{rhs}.count();
+}
+
+/// Determine whether the left-hand frequency \p lhs is unequal to the right-hand frequency \p rhs
+///
+/// The comparison is made using the common type of \p lhs and \p rhs.
+///
+/// \tparam Rep1 arithmetic type representing the number of ticks for \p lhs
+/// \tparam Period1 ratio representing the tick period for \p lhs
+/// \tparam Rep2 arithmetic type representing the number of ticks for \p rhs
+/// \tparam Period2 ratio representing the tick period for \p rhs
+/// \param lhs left-hand frequency to compare
+/// \param rhs right-hand frequency to compare
+/// \retval true if \p lhs and \p rhs represent different frequencies
+/// \retval false if \p lhs and \p rhs represent the same frequency
+template<typename Rep1, typename Period1, typename Rep2, typename Period2>
+constexpr auto operator!=(const frequency<Rep1, Period1>& lhs, const frequency<Rep2, Period2>& rhs)
+    -> bool
+{
+    return !(lhs == rhs);
+}
+
+/// Determine whether the left-hand frequency \p lhs is less frequent than the right-hand frequency
+/// \p rhs
+///
+/// The comparison is made using the common type of \p lhs and \p rhs.
+///
+/// \tparam Rep1 arithmetic type representing the number of ticks for \p lhs
+/// \tparam Period1 ratio representing the tick period for \p lhs
+/// \tparam Rep2 arithmetic type representing the number of ticks for \p rhs
+/// \tparam Period2 ratio representing the tick period for \p rhs
+/// \param lhs left-hand frequency to compare
+/// \param rhs right-hand frequency to compare
+/// \retval true if \p lhs is less frequent than \p rhs
+/// \retval false if \p lhs is more frequent than or as frequent as \p rhs
+template<typename Rep1, typename Period1, typename Rep2, typename Period2>
+constexpr auto operator<(const frequency<Rep1, Period1>& lhs, const frequency<Rep2, Period2>& rhs)
+    -> bool
+{
+    using ct = std::common_type_t<std::decay_t<decltype(lhs)>, std::decay_t<decltype(rhs)>>;
+    return ct{lhs}.count() < ct{rhs}.count();
+}
+
+/// Determine whether the left-hand frequency \p lhs is less frequent than or as frequent as the
+/// right-hand frequency \p rhs
+///
+/// The comparison is made using the common type of \p lhs and \p rhs.
+///
+/// \tparam Rep1 arithmetic type representing the number of ticks for \p lhs
+/// \tparam Period1 ratio representing the tick period for \p lhs
+/// \tparam Rep2 arithmetic type representing the number of ticks for \p rhs
+/// \tparam Period2 ratio representing the tick period for \p rhs
+/// \param lhs left-hand frequency to compare
+/// \param rhs right-hand frequency to compare
+/// \retval true if \p lhs is less frequent than or as frequent as \p rhs
+/// \retval false if \p lhs is more frequent than \p rhs
+template<typename Rep1, typename Period1, typename Rep2, typename Period2>
+constexpr auto operator<=(const frequency<Rep1, Period1>& lhs, const frequency<Rep2, Period2>& rhs)
+    -> bool
+{
+    return !(rhs < lhs);
+}
+
+/// Determine whether the left-hand frequency \p lhs is more frequent than the right-hand frequency
+/// \p rhs
+///
+/// The comparison is made using the common type of \p lhs and \p rhs.
+///
+/// \tparam Rep1 arithmetic type representing the number of ticks for \p lhs
+/// \tparam Period1 ratio representing the tick period for \p lhs
+/// \tparam Rep2 arithmetic type representing the number of ticks for \p rhs
+/// \tparam Period2 ratio representing the tick period for \p rhs
+/// \param lhs left-hand frequency to compare
+/// \param rhs right-hand frequency to compare
+/// \retval true if \p lhs is more frequent than \p rhs
+/// \retval false if \p lhs is less frequent than or as frequent as \p rhs
+template<typename Rep1, typename Period1, typename Rep2, typename Period2>
+constexpr auto operator>(const frequency<Rep1, Period1>& lhs, const frequency<Rep2, Period2>& rhs)
+    -> bool
+{
+    return rhs < lhs;
+}
+
+/// Determine whether the left-hand frequency \p lhs is more frequent than or as frequent as the
+/// right-hand frequency \p rhs
+///
+/// The comparison is made using the common type of \p lhs and \p rhs.
+///
+/// \tparam Rep1 arithmetic type representing the number of ticks for \p lhs
+/// \tparam Period1 ratio representing the tick period for \p lhs
+/// \tparam Rep2 arithmetic type representing the number of ticks for \p rhs
+/// \tparam Period2 ratio representing the tick period for \p rhs
+/// \param lhs left-hand frequency to compare
+/// \param rhs right-hand frequency to compare
+/// \retval true if \p lhs is more frequent than or as frequent as \p rhs
+/// \retval false if \p lhs is less frequent than \p rhs
+template<typename Rep1, typename Period1, typename Rep2, typename Period2>
+constexpr auto operator>=(const frequency<Rep1, Period1>& lhs, const frequency<Rep2, Period2>& rhs)
+    -> bool
+{
+    return !(lhs < rhs);
+}
+
 // SI units
 
 using nanohertz = frequency<std::int64_t, std::nano>; ///< Frequency specified in nanohertz (nHz)
