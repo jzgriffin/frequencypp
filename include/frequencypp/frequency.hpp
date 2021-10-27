@@ -126,6 +126,29 @@ struct frequency_values
     }
 };
 
+/// Convert a \ref frequency::frequency to a frequency of different type \p ToFrequency
+///
+/// No implicit conversions are used.  Computations are done in the widest type available and
+/// converted, as if by \c static_cast, to the result type only when finished.
+///
+/// \tparam ToFrequency \ref frequency::frequency type to convert to
+/// \tparam Rep arithmetic type representing the number of ticks for \p f
+/// \tparam Period ratio representing the tick period for \p f
+/// \param f frequency to convert
+/// \return \p f converted to a frequency of type \p ToFrequency
+template<typename ToFrequency, typename Rep, typename Period>
+constexpr auto frequency_cast(const frequency<Rep, Period>& f)
+    -> std::enable_if_t<detail::is_frequency_v<ToFrequency>, ToFrequency>
+{
+    using to_rep = typename ToFrequency::rep;
+    using to_period = typename ToFrequency::period;
+    using common_rep = std::common_type_t<Rep, to_rep, std::intmax_t>;
+    using common_period = std::ratio_divide<Period, to_period>;
+    return ToFrequency{static_cast<to_rep>(static_cast<common_rep>(f.count())
+        * static_cast<common_rep>(common_period::num)
+        / static_cast<common_rep>(common_period::den))};
+}
+
 /// Represents a temporal frequency
 ///
 /// A frequency consists of a count of ticks of type \p Rep and a tick period \p Period, where the
@@ -172,6 +195,20 @@ public:
                 rep> && (std::chrono::treat_as_floating_point_v<rep> || !std::chrono::treat_as_floating_point_v<Rep2>)>>
     constexpr explicit frequency(const Rep2& r)
         : count_(static_cast<rep>(r))
+    {}
+
+    /// Construct the frequency by converting \p f to an appropriate period and tick count, as if by
+    /// \p frequencypp::frequency_cast<frequency>(f).count()
+    ///
+    /// \tparam Rep2 arithmetic type representing the number of ticks
+    /// \tparam Period2 ratio representing the tick period
+    template<typename Rep2,
+        typename Period2,
+        typename = std::enable_if_t<
+            std::chrono::treat_as_floating_point_v<
+                rep> || (std::ratio_divide<Period2, period>::den == 1 && !std::chrono::treat_as_floating_point_v<Rep2>)>>
+    constexpr frequency(const frequency<Rep2, Period2>& f)
+        : count_(frequency_cast<frequency>(f).count())
     {}
 
     /// Destruct the frequency

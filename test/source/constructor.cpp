@@ -77,3 +77,26 @@ TEST_CASE("tick construct stores count", "[constructor]")
     // float from double
     REQUIRE(frequency<float>{0.5}.count() == 0.5F);
 }
+
+TEST_CASE("cast construct casts count", "[constructor][cast]")
+{
+    using namespace ::frequencypp;
+
+    // Should not compile due to truncation:
+    // REQUIRE(frequency<int>{1000_mHz}.count() == 1);
+    // REQUIRE(frequency<int, std::milli>{1.0_Hz}.count() == 1000);
+    // REQUIRE(frequency<int>{1.0_Hz}.count() == 1);
+
+    // Same representation, different period
+    REQUIRE(frequency<std::int64_t, std::milli>{1_Hz}.count() == 1000);
+    REQUIRE(frequency<std::int64_t, std::nano>{2_Hz}.count() == 2000000000);
+    REQUIRE(frequency<long double, std::mega>{5.0_GHz}.count() == 5000.0);
+    REQUIRE(frequency<long double, std::peta>{1250.0_THz}.count() == 1.250);
+
+    // Different representation, same period
+    REQUIRE(frequency<float, std::tera>{125_THz}.count() == 125.0F);
+
+    // Different representation and period
+    REQUIRE(frequency<float, std::milli>{1_Hz}.count() == 1000.0F);
+    REQUIRE(frequency<float, std::kilo>{125_Hz}.count() == 0.125F);
+}
