@@ -260,6 +260,22 @@ public:
     {
         return count_;
     }
+
+    /// Get the reinforcement of the frequency
+    ///
+    /// \return reinforcement of the frequency
+    constexpr auto operator+() const -> std::common_type_t<frequency>
+    {
+        return std::common_type_t<frequency>{*this};
+    }
+
+    /// Get the negation of the frequency
+    ///
+    /// \return negation of the frequency
+    constexpr auto operator-() const -> std::common_type_t<frequency>
+    {
+        return std::common_type_t<frequency>{-count_};
+    }
 };
 
 // Comparison
