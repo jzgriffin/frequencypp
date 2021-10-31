@@ -312,6 +312,70 @@ public:
     {
         return frequency{count_--};
     }
+
+    /// Add the frequency \p rhs to this frequency
+    ///
+    /// \param rhs right-hand frequency to add
+    /// \return reference to this frequency after modification
+    constexpr auto operator+=(const frequency& rhs) -> frequency&
+    {
+        count_ += rhs.count();
+        return *this;
+    }
+
+    /// Subtract the frequency \p rhs from this frequency
+    ///
+    /// \param rhs right-hand frequency to subtract
+    /// \return reference to this frequency after modification
+    constexpr auto operator-=(const frequency& rhs) -> frequency&
+    {
+        count_ -= rhs.count();
+        return *this;
+    }
+
+    /// Multiply this frequency by factor \p rhs
+    ///
+    /// \param rhs right-hand factor to multiply by
+    /// \return reference to this frequency after modification
+    constexpr auto operator*=(const rep& rhs) -> frequency&
+    {
+        count_ *= rhs;
+        return *this;
+    }
+
+    /// Divide this frequency by factor \p rhs
+    ///
+    /// \param rhs right-hand factor to divide by
+    /// \return reference to this frequency after modification
+    constexpr auto operator/=(const rep& rhs) -> frequency&
+    {
+        count_ /= rhs;
+        return *this;
+    }
+
+    /// Reduce this frequency by modulus \p rhs
+    ///
+    /// \param rhs right-hand modulus
+    /// \return reference to this frequency after modification
+    template<typename Rep2 = rep>
+    constexpr auto operator%=(const rep& rhs)
+        -> std::enable_if_t<!std::chrono::treat_as_floating_point_v<Rep2>, frequency&>
+    {
+        count_ %= rhs;
+        return *this;
+    }
+
+    /// Reduce this frequency by modulus \p rhs
+    ///
+    /// \param rhs right-hand modulus
+    /// \return reference to this frequency after modification
+    template<typename Rep2 = rep>
+    constexpr auto operator%=(const frequency& rhs)
+        -> std::enable_if_t<!std::chrono::treat_as_floating_point_v<Rep2>, frequency&>
+    {
+        count_ %= rhs.count();
+        return *this;
+    }
 };
 
 // Comparison

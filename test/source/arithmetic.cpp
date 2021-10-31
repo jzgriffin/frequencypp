@@ -74,3 +74,81 @@ TEST_CASE("decrement changes tick count", "[arithmetic]")
     REQUIRE((--f2).count() == -0.5F);
     REQUIRE(f2.count() == -0.5F);
 }
+
+// Compound assignment
+
+TEST_CASE("compound addition changes tick count", "[arithmetic]")
+{
+    using namespace ::frequencypp;
+
+    auto f1 = -1_Hz;
+    REQUIRE((f1 += 1_Hz).count() == 0);
+    REQUIRE((f1 += 4_Hz).count() == 4);
+    REQUIRE((f1 += 2_KHz).count() == 2004);
+
+    auto f2 = -1.5_uHz;
+    REQUIRE((f2 += 1.0_uHz).count() == Approx(-0.5));
+    REQUIRE((f2 += 4.75_uHz).count() == Approx(4.25));
+    REQUIRE((f2 += 2.0_mHz).count() == Approx(2004.25));
+}
+
+TEST_CASE("compound subtraction changes tick count", "[arithmetic]")
+{
+    using namespace ::frequencypp;
+
+    auto f1 = 1_Hz;
+    REQUIRE((f1 -= 1_Hz).count() == 0);
+    REQUIRE((f1 -= 4_Hz).count() == -4);
+    REQUIRE((f1 -= 2_KHz).count() == -2004);
+
+    auto f2 = 1.5_uHz;
+    REQUIRE((f2 -= 1.0_uHz).count() == Approx(0.5));
+    REQUIRE((f2 -= 4.75_uHz).count() == Approx(-4.25));
+    REQUIRE((f2 -= 2.0_mHz).count() == Approx(-2004.25));
+}
+
+TEST_CASE("compound multiplication changes tick count", "[arithmetic]")
+{
+    using namespace ::frequencypp;
+
+    auto f1 = 1_Hz;
+    REQUIRE((f1 *= -1).count() == -1);
+    REQUIRE((f1 *= -4).count() == 4);
+    REQUIRE((f1 *= 2).count() == 8);
+
+    auto f2 = 1.5_uHz;
+    REQUIRE((f2 *= -1.0).count() == Approx(-1.5));
+    REQUIRE((f2 *= -4.75).count() == Approx(7.125));
+    REQUIRE((f2 *= 2.0).count() == Approx(14.25));
+}
+
+TEST_CASE("compound division changes tick count", "[arithmetic]")
+{
+    using namespace ::frequencypp;
+
+    auto f1 = 15_Hz;
+    REQUIRE((f1 /= -1).count() == -15);
+    REQUIRE((f1 /= -4).count() == 3);
+    REQUIRE((f1 /= 2).count() == 1);
+
+    auto f2 = 1.5_uHz;
+    REQUIRE((f2 /= -1.0).count() == Approx(-1.5));
+    REQUIRE((f2 /= -3.0).count() == Approx(0.5));
+    REQUIRE((f2 /= 2.5).count() == Approx(0.2));
+}
+
+TEST_CASE("compound modulo changes tick count", "[arithmetic]")
+{
+    using namespace ::frequencypp;
+
+    auto f1 = 15_Hz;
+    REQUIRE((f1 %= 4).count() == 3);
+    REQUIRE((f1 %= 2).count() == 1);
+
+    auto f2 = 2500_KHz;
+    REQUIRE((f2 %= 2_MHz).count() == 500);
+
+    // Should not compile due to operator% being undefined for floating-point numbers:
+    // auto f3 = 1.5_uHz;
+    // f3 %= 0.5;
+}
