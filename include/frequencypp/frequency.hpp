@@ -19,7 +19,9 @@
 #ifndef FREQUENCYPP_FREQUENCY_HPP
 #define FREQUENCYPP_FREQUENCY_HPP
 
+#include <numeric>
 #include <ratio>
+#include <type_traits>
 
 // Forward declaration of the frequencypp::frequency type
 
@@ -31,6 +33,30 @@ struct frequency;
 } // namespace frequencypp
 
 // Types needed to implement frequency, which may refer to the above forward declaration
+
+/// Specialization of std::common_type for \ref frequencypp::frequency
+template<typename Rep1, typename Period1, typename Rep2, typename Period2>
+struct std::common_type<frequencypp::frequency<Rep1, Period1>,
+    frequencypp::frequency<Rep2, Period2>>
+{
+private:
+    static constexpr auto gcd_num = std::gcd(Period1::num, Period2::num);
+    static constexpr auto gcd_den = std::gcd(Period1::den, Period2::den);
+    using period = std::ratio<gcd_num, Period1::den / gcd_den * Period2::den>;
+
+public:
+    /// Common type of two \ref frequencypp::frequency types, whose period is the greatest common
+    /// divisor of \p Period1 and \p Period2
+    using type = frequencypp::frequency<std::common_type_t<Rep1, Rep2>, typename period::type>;
+};
+
+/// Specialization of std::common_type for two identical \ref frequencypp::frequency types
+template<typename Rep, typename Period>
+struct std::common_type<frequencypp::frequency<Rep, Period>>
+{
+    /// Common type of two identical \ref frequencypp::frequency types
+    using type = frequencypp::frequency<std::common_type_t<Rep>, typename Period::type>;
+};
 
 namespace frequencypp {
 

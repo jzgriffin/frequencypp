@@ -15,6 +15,7 @@ find_package(Catch2 REQUIRED)
 include(Catch)
 
 add_executable(frequencypp_test
+    source/common_type.cpp
     source/frequencypp_test.cpp
     source/type.cpp
 )
