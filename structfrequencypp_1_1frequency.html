@@ -76,6 +76,7 @@
               Reference
               <ul>
                 <li><a href="#pub-types">Public types</a></li>
+                <li><a href="#pub-static-methods">Public static functions</a></li>
                 <li><a href="#typeless-methods">Constructors, destructors, conversion operators</a></li>
                 <li><a href="#pub-methods">Public functions</a></li>
                 <li><a href="#pub-attribs">Public variables</a></li>
@@ -87,6 +88,10 @@
         <section id="pub-types">
           <h2><a href="#pub-types">Public types</a></h2>
           <dl class="m-doc">
+            <dt id="a7092eda8745782a4a2d500789f198784">
+              using <a href="#a7092eda8745782a4a2d500789f198784" class="m-doc-self">rep_values</a> = <a href="structfrequencypp_1_1frequency__values.html" class="m-doc">frequency_<wbr />values</a>&lt;Rep&gt;
+            </dt>
+            <dd><span></span></dd>
             <dt id="a2e7ea10a475ac224d5a991096ab969da">
               using <a href="#a2e7ea10a475ac224d5a991096ab969da" class="m-doc-self">rep</a> = Rep
             </dt>
@@ -95,6 +100,23 @@
               using <a href="#aacd722d3b6f6017be5b86a00d65eafa6" class="m-doc-self">period</a> = typename Period::type
             </dt>
             <dd>Ratio representing the tick period (i.e. the number of hertz fractions per tick)</dd>
+          </dl>
+        </section>
+        <section id="pub-static-methods">
+          <h2><a href="#pub-static-methods">Public static functions</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#aad4ea2f1580ef0bff590c824277e80a9" class="m-doc">zero</a>(</span><span class="m-doc-wrap">) noexcept -&gt; frequency <span class="m-label m-flat m-primary">constexpr</span></span>
+            </dt>
+            <dd>Gets the zero-length frequency.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#a719d32eeb8a91580a28be5f68f62be34" class="m-doc">min</a>(</span><span class="m-doc-wrap">) noexcept -&gt; frequency <span class="m-label m-flat m-primary">constexpr</span></span>
+            </dt>
+            <dd>Gets the smallest possible frequency.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#ae063057bb5e2a016c808af73cc02a9c6" class="m-doc">max</a>(</span><span class="m-doc-wrap">) noexcept -&gt; frequency <span class="m-label m-flat m-primary">constexpr</span></span>
+            </dt>
+            <dd>Gets the largest possible frequency.</dd>
           </dl>
         </section>
         <section id="typeless-methods">
@@ -143,6 +165,60 @@
         </section>
         <section>
           <h2>Function documentation</h2>
+          <section class="m-doc-details" id="aad4ea2f1580ef0bff590c824277e80a9"><div>
+            <h3>
+              <div class="m-doc-template">
+                template&lt;typename Rep, typename Period&gt;
+              </div>
+              <span class="m-doc-wrap-bumper">static auto frequencypp::<wbr />frequency&lt;Rep, Period&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aad4ea2f1580ef0bff590c824277e80a9" class="m-doc-self">zero</a>(</span><span class="m-doc-wrap">) noexcept -&gt; frequency <span class="m-label m-primary">constexpr</span></span></span>
+            </h3>
+            <p>Gets the zero-length frequency.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>zero-length frequency</td>
+                </tr>
+              </tfoot>
+            </table>
+<p>If the representation <code>Rep</code> of the frequency requires some other implementation to return a zero-length frequency, <a href="structfrequencypp_1_1frequency__values.html" class="m-doc">frequencypp::<wbr />frequency_values</a> can be specialized to return the desired value.</p>
+          </div></section>
+          <section class="m-doc-details" id="a719d32eeb8a91580a28be5f68f62be34"><div>
+            <h3>
+              <div class="m-doc-template">
+                template&lt;typename Rep, typename Period&gt;
+              </div>
+              <span class="m-doc-wrap-bumper">static auto frequencypp::<wbr />frequency&lt;Rep, Period&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a719d32eeb8a91580a28be5f68f62be34" class="m-doc-self">min</a>(</span><span class="m-doc-wrap">) noexcept -&gt; frequency <span class="m-label m-primary">constexpr</span></span></span>
+            </h3>
+            <p>Gets the smallest possible frequency.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>smallest possible frequency</td>
+                </tr>
+              </tfoot>
+            </table>
+<p>If the representation <code>Rep</code> of the frequency requires some other implementation to return a smallest possible frequency, <a href="structfrequencypp_1_1frequency__values.html" class="m-doc">frequencypp::<wbr />frequency_values</a> can be specialized to return the desired value.</p>
+          </div></section>
+          <section class="m-doc-details" id="ae063057bb5e2a016c808af73cc02a9c6"><div>
+            <h3>
+              <div class="m-doc-template">
+                template&lt;typename Rep, typename Period&gt;
+              </div>
+              <span class="m-doc-wrap-bumper">static auto frequencypp::<wbr />frequency&lt;Rep, Period&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ae063057bb5e2a016c808af73cc02a9c6" class="m-doc-self">max</a>(</span><span class="m-doc-wrap">) noexcept -&gt; frequency <span class="m-label m-primary">constexpr</span></span></span>
+            </h3>
+            <p>Gets the largest possible frequency.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>largest possible frequency</td>
+                </tr>
+              </tfoot>
+            </table>
+<p>If the representation <code>Rep</code> of the frequency requires some other implementation to return a largest possible frequency, <a href="structfrequencypp_1_1frequency__values.html" class="m-doc">frequencypp::<wbr />frequency_values</a> can be specialized to return the desired value.</p>
+          </div></section>
           <section class="m-doc-details" id="a28f97015cc4d611fa45acc1b66457583"><div>
             <h3>
               <div class="m-doc-template">
