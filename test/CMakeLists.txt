@@ -22,6 +22,7 @@ add_executable(frequencypp_test
     source/constructor.cpp
     source/frequencypp_test.cpp
     source/io.cpp
+    source/numeric.cpp
     source/si.cpp
     source/type.cpp
     source/values.cpp

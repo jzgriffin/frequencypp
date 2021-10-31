@@ -650,6 +650,79 @@ constexpr auto operator%(const frequency<Rep1, Period1>& lhs, const frequency<Re
     return ct{lhs}.count() % ct{rhs}.count();
 }
 
+// Numeric
+
+/// Compute the floor of frequency \p f
+///
+/// \tparam ToFrequency \ref frequency::frequency type to convert to
+/// \tparam Rep arithmetic type representing the number of ticks for \p f
+/// \tparam Period ratio representing the tick period for \p f
+/// \param f frequency to convert
+/// \return greatest duration representable in \p ToFrequency that is less than or equal to \p f
+template<typename ToFrequency, typename Rep, typename Period>
+constexpr auto floor(const frequency<Rep, Period>& f) -> ToFrequency
+{
+    auto t = frequency_cast<ToFrequency>(f);
+    if (t > f) {
+        return t - ToFrequency{1};
+    }
+    return t;
+}
+
+/// Compute the ceiling of frequency \p f
+///
+/// \tparam ToFrequency \ref frequency::frequency type to convert to
+/// \tparam Rep arithmetic type representing the number of ticks for \p f
+/// \tparam Period ratio representing the tick period for \p f
+/// \param f frequency to convert
+/// \return smallest duration representable in \p ToFrequency that is greater than or equal to \p f
+template<typename ToFrequency, typename Rep, typename Period>
+constexpr auto ceil(const frequency<Rep, Period>& f) -> ToFrequency
+{
+    auto t = frequency_cast<ToFrequency>(f);
+    if (t < f) {
+        return t + ToFrequency{1};
+    }
+    return t;
+}
+
+/// Round frequency \p f to its closest representation in \p ToFrequency
+///
+/// \tparam ToFrequency \ref frequency::frequency type to convert to
+/// \tparam Rep arithmetic type representing the number of ticks for \p f
+/// \tparam Period ratio representing the tick period for \p f
+/// \param f frequency to convert
+/// \return value representable in \p ToFrequency that is closest to \p f, rounded to even in
+/// halfway cases
+template<typename ToFrequency, typename Rep, typename Period>
+constexpr auto round(const frequency<Rep, Period>& f) -> std::enable_if_t<
+    detail::is_frequency_v<
+        ToFrequency> && !std::chrono::treat_as_floating_point_v<typename ToFrequency::rep>,
+    ToFrequency>
+{
+    auto t0 = floor<ToFrequency>(f);
+    auto t1 = t0 + ToFrequency{1};
+    auto diff0 = f - t0;
+    auto diff1 = t1 - f;
+    if (diff0 == diff1) {
+        return (t0.count() & 1) == 0 ? t0 : t1;
+    }
+    return diff0 < diff1 ? t0 : t1;
+}
+
+/// Compute the absolute value of frequency \p f
+///
+/// \tparam Rep arithmetic type representing the number of ticks for \p f
+/// \tparam Period ratio representing the tick period for \p f
+/// \param f frequency to convert
+/// \return absolute value of \p f
+template<typename Rep, typename Period>
+constexpr auto abs(frequency<Rep, Period> f)
+    -> std::enable_if_t<std::numeric_limits<Rep>::is_signed, frequency<Rep, Period>>
+{
+    return f >= f.zero() ? f : -f;
+}
+
 /// Inserts a textual representation of \p f into \p os
 ///
 /// The frequency is inserted into \p os as a string after being formatted out-of-line in a stream
