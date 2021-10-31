@@ -138,6 +138,42 @@
             </dt>
             <dd>Convert a <a href="structfrequencypp_1_1frequency.html#a3b3fd96425613b464bd49688809a083d" class="m-doc">frequency::<wbr />frequency</a> to a frequency of different type <code>ToFrequency</code>.</dd>
             <dt>
+              <div class="m-doc-template">template&lt;typename Rep1, typename Period1, typename Rep2, typename Period2&gt;</div>
+              <span class="m-doc-wrap-bumper">auto <a href="#a1de9b3c72fca6d3e8d16d54563568297" class="m-doc">operator==</a>(</span><span class="m-doc-wrap">const <a href="structfrequencypp_1_1frequency.html" class="m-doc">frequency</a>&lt;Rep1, Period1&gt;&amp; lhs,
+              const <a href="structfrequencypp_1_1frequency.html" class="m-doc">frequency</a>&lt;Rep2, Period2&gt;&amp; rhs) -&gt; bool <span class="m-label m-flat m-primary">constexpr</span></span>
+            </dt>
+            <dd>Determine whether the left-hand frequency <code>lhs</code> is equal to the right-hand frequency <code>rhs</code>.</dd>
+            <dt>
+              <div class="m-doc-template">template&lt;typename Rep1, typename Period1, typename Rep2, typename Period2&gt;</div>
+              <span class="m-doc-wrap-bumper">auto <a href="#a18541bbf3e84b910f5869392b9af5f65" class="m-doc">operator!=</a>(</span><span class="m-doc-wrap">const <a href="structfrequencypp_1_1frequency.html" class="m-doc">frequency</a>&lt;Rep1, Period1&gt;&amp; lhs,
+              const <a href="structfrequencypp_1_1frequency.html" class="m-doc">frequency</a>&lt;Rep2, Period2&gt;&amp; rhs) -&gt; bool <span class="m-label m-flat m-primary">constexpr</span></span>
+            </dt>
+            <dd>Determine whether the left-hand frequency <code>lhs</code> is unequal to the right-hand frequency <code>rhs</code>.</dd>
+            <dt>
+              <div class="m-doc-template">template&lt;typename Rep1, typename Period1, typename Rep2, typename Period2&gt;</div>
+              <span class="m-doc-wrap-bumper">auto <a href="#ab3c8c7092567d45fe911b7675ba301b0" class="m-doc">operator&lt;</a>(</span><span class="m-doc-wrap">const <a href="structfrequencypp_1_1frequency.html" class="m-doc">frequency</a>&lt;Rep1, Period1&gt;&amp; lhs,
+              const <a href="structfrequencypp_1_1frequency.html" class="m-doc">frequency</a>&lt;Rep2, Period2&gt;&amp; rhs) -&gt; bool <span class="m-label m-flat m-primary">constexpr</span></span>
+            </dt>
+            <dd>Determine whether the left-hand frequency <code>lhs</code> is less frequent than the right-hand frequency <code>rhs</code>.</dd>
+            <dt>
+              <div class="m-doc-template">template&lt;typename Rep1, typename Period1, typename Rep2, typename Period2&gt;</div>
+              <span class="m-doc-wrap-bumper">auto <a href="#a785e59caaf79c252fb6e3af610cf7931" class="m-doc">operator&lt;=</a>(</span><span class="m-doc-wrap">const <a href="structfrequencypp_1_1frequency.html" class="m-doc">frequency</a>&lt;Rep1, Period1&gt;&amp; lhs,
+              const <a href="structfrequencypp_1_1frequency.html" class="m-doc">frequency</a>&lt;Rep2, Period2&gt;&amp; rhs) -&gt; bool <span class="m-label m-flat m-primary">constexpr</span></span>
+            </dt>
+            <dd>Determine whether the left-hand frequency <code>lhs</code> is less frequent than or as frequent as the right-hand frequency <code>rhs</code>.</dd>
+            <dt>
+              <div class="m-doc-template">template&lt;typename Rep1, typename Period1, typename Rep2, typename Period2&gt;</div>
+              <span class="m-doc-wrap-bumper">auto <a href="#ada77ca74cac8dba90a7cfb8decd5a0f4" class="m-doc">operator&gt;</a>(</span><span class="m-doc-wrap">const <a href="structfrequencypp_1_1frequency.html" class="m-doc">frequency</a>&lt;Rep1, Period1&gt;&amp; lhs,
+              const <a href="structfrequencypp_1_1frequency.html" class="m-doc">frequency</a>&lt;Rep2, Period2&gt;&amp; rhs) -&gt; bool <span class="m-label m-flat m-primary">constexpr</span></span>
+            </dt>
+            <dd>Determine whether the left-hand frequency <code>lhs</code> is more frequent than the right-hand frequency <code>rhs</code>.</dd>
+            <dt>
+              <div class="m-doc-template">template&lt;typename Rep1, typename Period1, typename Rep2, typename Period2&gt;</div>
+              <span class="m-doc-wrap-bumper">auto <a href="#a8d4f62882bc93dd848f25cb7e5695a1a" class="m-doc">operator&gt;=</a>(</span><span class="m-doc-wrap">const <a href="structfrequencypp_1_1frequency.html" class="m-doc">frequency</a>&lt;Rep1, Period1&gt;&amp; lhs,
+              const <a href="structfrequencypp_1_1frequency.html" class="m-doc">frequency</a>&lt;Rep2, Period2&gt;&amp; rhs) -&gt; bool <span class="m-label m-flat m-primary">constexpr</span></span>
+            </dt>
+            <dd>Determine whether the left-hand frequency <code>lhs</code> is more frequent than or as frequent as the right-hand frequency <code>rhs</code>.</dd>
+            <dt>
               <span class="m-doc-wrap-bumper">auto <a href="namespacefrequencypp_1_1literals.html#a20fa0dbfb5ff6b0e407597a5a0318126" class="m-doc">operator&quot;&quot;_nHz</a>(</span><span class="m-doc-wrap">unsigned long long r) -&gt; nanohertz <span class="m-label m-flat m-primary">constexpr</span></span>
             </dt>
             <dd>Literal suffix for frequencies of type <a href="namespacefrequencypp.html#ae60e077186de041eb101a41db275fb82" class="m-doc">frequencypp::<wbr />nanohertz</a>.</dd>
@@ -323,6 +359,372 @@
               </tfoot>
             </table>
 <p>No implicit conversions are used. Computations are done in the widest type available and converted, as if by <code>static_cast</code>, to the result type only when finished.</p>
+          </div></section>
+          <section class="m-doc-details" id="a1de9b3c72fca6d3e8d16d54563568297"><div>
+            <h3>
+              <div class="m-doc-include m-code m-inverted m-right-m m-text-right"><span class="cp">#include</span> <a class="cpf" href="frequency_8hpp.html">&lt;frequencypp/frequency.hpp&gt;</a></div>
+              <div class="m-doc-template">
+                template&lt;typename Rep1, typename Period1, typename Rep2, typename Period2&gt;
+              </div>
+              <span class="m-doc-wrap-bumper">auto frequencypp::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a1de9b3c72fca6d3e8d16d54563568297" class="m-doc-self">operator==</a>(</span><span class="m-doc-wrap">const <a href="structfrequencypp_1_1frequency.html" class="m-doc">frequency</a>&lt;Rep1, Period1&gt;&amp; lhs,
+              const <a href="structfrequencypp_1_1frequency.html" class="m-doc">frequency</a>&lt;Rep2, Period2&gt;&amp; rhs) -&gt; bool <span class="m-label m-primary">constexpr</span></span></span>
+            </h3>
+            <p>Determine whether the left-hand frequency <code>lhs</code> is equal to the right-hand frequency <code>rhs</code>.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Template parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">Rep1</td>
+                  <td>arithmetic type representing the number of ticks for <code>lhs</code></td>
+                </tr>
+                <tr>
+                  <td>Period1</td>
+                  <td>ratio representing the tick period for <code>lhs</code></td>
+                </tr>
+                <tr>
+                  <td>Rep2</td>
+                  <td>arithmetic type representing the number of ticks for <code>rhs</code></td>
+                </tr>
+                <tr>
+                  <td>Period2</td>
+                  <td>ratio representing the tick period for <code>rhs</code></td>
+                </tr>
+              </tbody>
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>lhs</td>
+                  <td>left-hand frequency to compare</td>
+                </tr>
+                <tr>
+                  <td>rhs</td>
+                  <td>right-hand frequency to compare</td>
+                </tr>
+              </tbody>
+              <thead>
+                <tr><th colspan="2">Returns</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>true</td>
+                  <td>if <code>lhs</code> and <code>rhs</code> represent the same frequency</td>
+                </tr>
+                <tr>
+                  <td>false</td>
+                  <td>if <code>lhs</code> and <code>rhs</code> represent different frequencies</td>
+                </tr>
+              </tbody>
+            </table>
+<p>The comparison is made using the common type of <code>lhs</code> and <code>rhs</code>.</p>
+          </div></section>
+          <section class="m-doc-details" id="a18541bbf3e84b910f5869392b9af5f65"><div>
+            <h3>
+              <div class="m-doc-include m-code m-inverted m-right-m m-text-right"><span class="cp">#include</span> <a class="cpf" href="frequency_8hpp.html">&lt;frequencypp/frequency.hpp&gt;</a></div>
+              <div class="m-doc-template">
+                template&lt;typename Rep1, typename Period1, typename Rep2, typename Period2&gt;
+              </div>
+              <span class="m-doc-wrap-bumper">auto frequencypp::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a18541bbf3e84b910f5869392b9af5f65" class="m-doc-self">operator!=</a>(</span><span class="m-doc-wrap">const <a href="structfrequencypp_1_1frequency.html" class="m-doc">frequency</a>&lt;Rep1, Period1&gt;&amp; lhs,
+              const <a href="structfrequencypp_1_1frequency.html" class="m-doc">frequency</a>&lt;Rep2, Period2&gt;&amp; rhs) -&gt; bool <span class="m-label m-primary">constexpr</span></span></span>
+            </h3>
+            <p>Determine whether the left-hand frequency <code>lhs</code> is unequal to the right-hand frequency <code>rhs</code>.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Template parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">Rep1</td>
+                  <td>arithmetic type representing the number of ticks for <code>lhs</code></td>
+                </tr>
+                <tr>
+                  <td>Period1</td>
+                  <td>ratio representing the tick period for <code>lhs</code></td>
+                </tr>
+                <tr>
+                  <td>Rep2</td>
+                  <td>arithmetic type representing the number of ticks for <code>rhs</code></td>
+                </tr>
+                <tr>
+                  <td>Period2</td>
+                  <td>ratio representing the tick period for <code>rhs</code></td>
+                </tr>
+              </tbody>
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>lhs</td>
+                  <td>left-hand frequency to compare</td>
+                </tr>
+                <tr>
+                  <td>rhs</td>
+                  <td>right-hand frequency to compare</td>
+                </tr>
+              </tbody>
+              <thead>
+                <tr><th colspan="2">Returns</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>true</td>
+                  <td>if <code>lhs</code> and <code>rhs</code> represent different frequencies</td>
+                </tr>
+                <tr>
+                  <td>false</td>
+                  <td>if <code>lhs</code> and <code>rhs</code> represent the same frequency</td>
+                </tr>
+              </tbody>
+            </table>
+<p>The comparison is made using the common type of <code>lhs</code> and <code>rhs</code>.</p>
+          </div></section>
+          <section class="m-doc-details" id="ab3c8c7092567d45fe911b7675ba301b0"><div>
+            <h3>
+              <div class="m-doc-include m-code m-inverted m-right-m m-text-right"><span class="cp">#include</span> <a class="cpf" href="frequency_8hpp.html">&lt;frequencypp/frequency.hpp&gt;</a></div>
+              <div class="m-doc-template">
+                template&lt;typename Rep1, typename Period1, typename Rep2, typename Period2&gt;
+              </div>
+              <span class="m-doc-wrap-bumper">auto frequencypp::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ab3c8c7092567d45fe911b7675ba301b0" class="m-doc-self">operator&lt;</a>(</span><span class="m-doc-wrap">const <a href="structfrequencypp_1_1frequency.html" class="m-doc">frequency</a>&lt;Rep1, Period1&gt;&amp; lhs,
+              const <a href="structfrequencypp_1_1frequency.html" class="m-doc">frequency</a>&lt;Rep2, Period2&gt;&amp; rhs) -&gt; bool <span class="m-label m-primary">constexpr</span></span></span>
+            </h3>
+            <p>Determine whether the left-hand frequency <code>lhs</code> is less frequent than the right-hand frequency <code>rhs</code>.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Template parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">Rep1</td>
+                  <td>arithmetic type representing the number of ticks for <code>lhs</code></td>
+                </tr>
+                <tr>
+                  <td>Period1</td>
+                  <td>ratio representing the tick period for <code>lhs</code></td>
+                </tr>
+                <tr>
+                  <td>Rep2</td>
+                  <td>arithmetic type representing the number of ticks for <code>rhs</code></td>
+                </tr>
+                <tr>
+                  <td>Period2</td>
+                  <td>ratio representing the tick period for <code>rhs</code></td>
+                </tr>
+              </tbody>
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>lhs</td>
+                  <td>left-hand frequency to compare</td>
+                </tr>
+                <tr>
+                  <td>rhs</td>
+                  <td>right-hand frequency to compare</td>
+                </tr>
+              </tbody>
+              <thead>
+                <tr><th colspan="2">Returns</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>true</td>
+                  <td>if <code>lhs</code> is less frequent than <code>rhs</code></td>
+                </tr>
+                <tr>
+                  <td>false</td>
+                  <td>if <code>lhs</code> is more frequent than or as frequent as <code>rhs</code></td>
+                </tr>
+              </tbody>
+            </table>
+<p>The comparison is made using the common type of <code>lhs</code> and <code>rhs</code>.</p>
+          </div></section>
+          <section class="m-doc-details" id="a785e59caaf79c252fb6e3af610cf7931"><div>
+            <h3>
+              <div class="m-doc-include m-code m-inverted m-right-m m-text-right"><span class="cp">#include</span> <a class="cpf" href="frequency_8hpp.html">&lt;frequencypp/frequency.hpp&gt;</a></div>
+              <div class="m-doc-template">
+                template&lt;typename Rep1, typename Period1, typename Rep2, typename Period2&gt;
+              </div>
+              <span class="m-doc-wrap-bumper">auto frequencypp::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a785e59caaf79c252fb6e3af610cf7931" class="m-doc-self">operator&lt;=</a>(</span><span class="m-doc-wrap">const <a href="structfrequencypp_1_1frequency.html" class="m-doc">frequency</a>&lt;Rep1, Period1&gt;&amp; lhs,
+              const <a href="structfrequencypp_1_1frequency.html" class="m-doc">frequency</a>&lt;Rep2, Period2&gt;&amp; rhs) -&gt; bool <span class="m-label m-primary">constexpr</span></span></span>
+            </h3>
+            <p>Determine whether the left-hand frequency <code>lhs</code> is less frequent than or as frequent as the right-hand frequency <code>rhs</code>.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Template parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">Rep1</td>
+                  <td>arithmetic type representing the number of ticks for <code>lhs</code></td>
+                </tr>
+                <tr>
+                  <td>Period1</td>
+                  <td>ratio representing the tick period for <code>lhs</code></td>
+                </tr>
+                <tr>
+                  <td>Rep2</td>
+                  <td>arithmetic type representing the number of ticks for <code>rhs</code></td>
+                </tr>
+                <tr>
+                  <td>Period2</td>
+                  <td>ratio representing the tick period for <code>rhs</code></td>
+                </tr>
+              </tbody>
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>lhs</td>
+                  <td>left-hand frequency to compare</td>
+                </tr>
+                <tr>
+                  <td>rhs</td>
+                  <td>right-hand frequency to compare</td>
+                </tr>
+              </tbody>
+              <thead>
+                <tr><th colspan="2">Returns</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>true</td>
+                  <td>if <code>lhs</code> is less frequent than or as frequent as <code>rhs</code></td>
+                </tr>
+                <tr>
+                  <td>false</td>
+                  <td>if <code>lhs</code> is more frequent than <code>rhs</code></td>
+                </tr>
+              </tbody>
+            </table>
+<p>The comparison is made using the common type of <code>lhs</code> and <code>rhs</code>.</p>
+          </div></section>
+          <section class="m-doc-details" id="ada77ca74cac8dba90a7cfb8decd5a0f4"><div>
+            <h3>
+              <div class="m-doc-include m-code m-inverted m-right-m m-text-right"><span class="cp">#include</span> <a class="cpf" href="frequency_8hpp.html">&lt;frequencypp/frequency.hpp&gt;</a></div>
+              <div class="m-doc-template">
+                template&lt;typename Rep1, typename Period1, typename Rep2, typename Period2&gt;
+              </div>
+              <span class="m-doc-wrap-bumper">auto frequencypp::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ada77ca74cac8dba90a7cfb8decd5a0f4" class="m-doc-self">operator&gt;</a>(</span><span class="m-doc-wrap">const <a href="structfrequencypp_1_1frequency.html" class="m-doc">frequency</a>&lt;Rep1, Period1&gt;&amp; lhs,
+              const <a href="structfrequencypp_1_1frequency.html" class="m-doc">frequency</a>&lt;Rep2, Period2&gt;&amp; rhs) -&gt; bool <span class="m-label m-primary">constexpr</span></span></span>
+            </h3>
+            <p>Determine whether the left-hand frequency <code>lhs</code> is more frequent than the right-hand frequency <code>rhs</code>.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Template parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">Rep1</td>
+                  <td>arithmetic type representing the number of ticks for <code>lhs</code></td>
+                </tr>
+                <tr>
+                  <td>Period1</td>
+                  <td>ratio representing the tick period for <code>lhs</code></td>
+                </tr>
+                <tr>
+                  <td>Rep2</td>
+                  <td>arithmetic type representing the number of ticks for <code>rhs</code></td>
+                </tr>
+                <tr>
+                  <td>Period2</td>
+                  <td>ratio representing the tick period for <code>rhs</code></td>
+                </tr>
+              </tbody>
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>lhs</td>
+                  <td>left-hand frequency to compare</td>
+                </tr>
+                <tr>
+                  <td>rhs</td>
+                  <td>right-hand frequency to compare</td>
+                </tr>
+              </tbody>
+              <thead>
+                <tr><th colspan="2">Returns</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>true</td>
+                  <td>if <code>lhs</code> is more frequent than <code>rhs</code></td>
+                </tr>
+                <tr>
+                  <td>false</td>
+                  <td>if <code>lhs</code> is less frequent than or as frequent as <code>rhs</code></td>
+                </tr>
+              </tbody>
+            </table>
+<p>The comparison is made using the common type of <code>lhs</code> and <code>rhs</code>.</p>
+          </div></section>
+          <section class="m-doc-details" id="a8d4f62882bc93dd848f25cb7e5695a1a"><div>
+            <h3>
+              <div class="m-doc-include m-code m-inverted m-right-m m-text-right"><span class="cp">#include</span> <a class="cpf" href="frequency_8hpp.html">&lt;frequencypp/frequency.hpp&gt;</a></div>
+              <div class="m-doc-template">
+                template&lt;typename Rep1, typename Period1, typename Rep2, typename Period2&gt;
+              </div>
+              <span class="m-doc-wrap-bumper">auto frequencypp::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a8d4f62882bc93dd848f25cb7e5695a1a" class="m-doc-self">operator&gt;=</a>(</span><span class="m-doc-wrap">const <a href="structfrequencypp_1_1frequency.html" class="m-doc">frequency</a>&lt;Rep1, Period1&gt;&amp; lhs,
+              const <a href="structfrequencypp_1_1frequency.html" class="m-doc">frequency</a>&lt;Rep2, Period2&gt;&amp; rhs) -&gt; bool <span class="m-label m-primary">constexpr</span></span></span>
+            </h3>
+            <p>Determine whether the left-hand frequency <code>lhs</code> is more frequent than or as frequent as the right-hand frequency <code>rhs</code>.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Template parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">Rep1</td>
+                  <td>arithmetic type representing the number of ticks for <code>lhs</code></td>
+                </tr>
+                <tr>
+                  <td>Period1</td>
+                  <td>ratio representing the tick period for <code>lhs</code></td>
+                </tr>
+                <tr>
+                  <td>Rep2</td>
+                  <td>arithmetic type representing the number of ticks for <code>rhs</code></td>
+                </tr>
+                <tr>
+                  <td>Period2</td>
+                  <td>ratio representing the tick period for <code>rhs</code></td>
+                </tr>
+              </tbody>
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>lhs</td>
+                  <td>left-hand frequency to compare</td>
+                </tr>
+                <tr>
+                  <td>rhs</td>
+                  <td>right-hand frequency to compare</td>
+                </tr>
+              </tbody>
+              <thead>
+                <tr><th colspan="2">Returns</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>true</td>
+                  <td>if <code>lhs</code> is more frequent than or as frequent as <code>rhs</code></td>
+                </tr>
+                <tr>
+                  <td>false</td>
+                  <td>if <code>lhs</code> is less frequent than <code>rhs</code></td>
+                </tr>
+              </tbody>
+            </table>
+<p>The comparison is made using the common type of <code>lhs</code> and <code>rhs</code>.</p>
           </div></section>
         </section>
       </div>
