@@ -20,6 +20,7 @@
 #define FREQUENCYPP_FREQUENCY_HPP
 
 #include <chrono>
+#include <limits>
 #include <numeric>
 #include <ratio>
 #include <type_traits>
@@ -89,6 +90,41 @@ struct std::common_type<frequencypp::frequency<Rep, Period>>
 
 namespace frequencypp {
 
+/// Defines three common frequencies that can be specialized for a given \p Rep if the
+/// representation requires specific values
+///
+/// The \ref frequencypp::frequency::zero, \ref frequencypp::frequency::min, and
+/// \ref frequencypp::frequency::max methods forward their work to these methods.
+///
+/// \tparam Rep arithmetic type representing the number of ticks
+template<typename Rep>
+struct frequency_values
+{
+    /// Gets the zero-length representation
+    ///
+    /// \return zero-length representation
+    static constexpr auto zero() noexcept -> Rep
+    {
+        return Rep{0};
+    }
+
+    /// Gets the smallest possible representation
+    ///
+    /// \return smallest possible representation
+    static constexpr auto min() noexcept -> Rep
+    {
+        return std::numeric_limits<Rep>::lowest();
+    }
+
+    /// Gets the largest possible representation
+    ///
+    /// \return largest possible representation
+    static constexpr auto max() noexcept -> Rep
+    {
+        return std::numeric_limits<Rep>::max();
+    }
+};
+
 /// Represents a temporal frequency
 ///
 /// A frequency consists of a count of ticks of type \p Rep and a tick period \p Period, where the
@@ -105,6 +141,8 @@ namespace frequencypp {
 template<typename Rep, typename Period>
 struct frequency
 {
+    using rep_values = frequency_values<Rep>;
+
     Rep count_;
 
 public:
@@ -140,6 +178,42 @@ public:
 
     /// Copy-assign the frequency
     auto operator=(const frequency&) -> frequency& = default;
+
+    /// Gets the zero-length frequency
+    ///
+    /// If the representation \p Rep of the frequency requires some other implementation to return a
+    /// zero-length frequency, \ref frequencypp::frequency_values can be specialized to return the
+    /// desired value.
+    ///
+    /// \return zero-length frequency
+    static constexpr auto zero() noexcept -> frequency
+    {
+        return frequency{rep_values::zero()};
+    }
+
+    /// Gets the smallest possible frequency
+    ///
+    /// If the representation \p Rep of the frequency requires some other implementation to return a
+    /// smallest possible frequency, \ref frequencypp::frequency_values can be specialized to return
+    /// the desired value.
+    ///
+    /// \return smallest possible frequency
+    static constexpr auto min() noexcept -> frequency
+    {
+        return frequency{rep_values::min()};
+    }
+
+    /// Gets the largest possible frequency
+    ///
+    /// If the representation \p Rep of the frequency requires some other implementation to return a
+    /// largest possible frequency, \ref frequencypp::frequency_values can be specialized to return
+    /// the desired value.
+    ///
+    /// \return largest possible frequency
+    static constexpr auto max() noexcept -> frequency
+    {
+        return frequency{rep_values::max()};
+    }
 
     /// Get the number of ticks
     ///

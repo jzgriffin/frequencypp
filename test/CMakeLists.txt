@@ -19,6 +19,7 @@ add_executable(frequencypp_test
     source/constructor.cpp
     source/frequencypp_test.cpp
     source/type.cpp
+    source/values.cpp
 )
 target_link_libraries(frequencypp_test
     PRIVATE
