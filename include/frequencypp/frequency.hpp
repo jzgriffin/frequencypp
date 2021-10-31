@@ -500,6 +500,156 @@ constexpr auto operator>=(const frequency<Rep1, Period1>& lhs, const frequency<R
     return !(lhs < rhs);
 }
 
+// Arithmetic
+
+/// Add the tick count of frequency \p rhs to the tick count of frequency \p lhs
+///
+/// The calculation is done using the common type of \p lhs and \p rhs.
+///
+/// \tparam Rep1 arithmetic type representing the number of ticks for \p lhs
+/// \tparam Period1 ratio representing the tick period for \p lhs
+/// \tparam Rep2 arithmetic type representing the number of ticks for \p rhs
+/// \tparam Period2 ratio representing the tick period for \p rhs
+/// \param lhs left-hand frequency to add
+/// \param rhs right-hand frequency to add
+/// \return frequency with the sum of the tick counts of \p lhs and \p rhs
+template<typename Rep1, typename Period1, typename Rep2, typename Period2>
+constexpr auto operator+(const frequency<Rep1, Period1>& lhs, const frequency<Rep2, Period2>& rhs)
+    -> std::common_type_t<frequency<Rep1, Period1>, frequency<Rep2, Period2>>
+{
+    using ct = std::common_type_t<std::decay_t<decltype(lhs)>, std::decay_t<decltype(rhs)>>;
+    return ct{ct{lhs}.count() + ct{rhs}.count()};
+}
+
+/// Subtract the tick count of frequency \p rhs from the tick count of frequency \p lhs
+///
+/// The calculation is done using the common type of \p lhs and \p rhs.
+///
+/// \tparam Rep1 arithmetic type representing the number of ticks for \p lhs
+/// \tparam Period1 ratio representing the tick period for \p lhs
+/// \tparam Rep2 arithmetic type representing the number of ticks for \p rhs
+/// \tparam Period2 ratio representing the tick period for \p rhs
+/// \param lhs left-hand frequency to subtract
+/// \param rhs right-hand frequency to subtract
+/// \return frequency with the difference of the tick counts of \p lhs and \p rhs
+template<typename Rep1, typename Period1, typename Rep2, typename Period2>
+constexpr auto operator-(const frequency<Rep1, Period1>& lhs, const frequency<Rep2, Period2>& rhs)
+    -> std::common_type_t<frequency<Rep1, Period1>, frequency<Rep2, Period2>>
+{
+    using ct = std::common_type_t<std::decay_t<decltype(lhs)>, std::decay_t<decltype(rhs)>>;
+    return ct{ct{lhs}.count() - ct{rhs}.count()};
+}
+
+/// Multiply the tick count of frequency \p lhs by factor \p rhs
+///
+/// The calculation is done using the common type of \p lhs and \p rhs.
+///
+/// \tparam Rep1 arithmetic type representing the number of ticks for \p lhs
+/// \tparam Period ratio representing the tick period for \p lhs
+/// \tparam Rep2 arithmetic type representing the number of ticks for \p rhs
+/// \param lhs left-hand frequency to multiply
+/// \param rhs right-hand factor to multiply by
+/// \return frequency with the product of the tick count of \p lhs and \p rhs
+template<typename Rep1, typename Period, typename Rep2>
+constexpr auto operator*(const frequency<Rep1, Period>& lhs, const Rep2& rhs)
+    -> frequency<std::common_type_t<Rep1, Rep2>, Period>
+{
+    using ct = frequency<std::common_type_t<Rep1, Rep2>, Period>;
+    return ct{ct{lhs}.count() * rhs};
+}
+
+/// Multiply the tick count of frequency \p rhs by factor \p lhs
+///
+/// The calculation is done using the common type of \p lhs and \p rhs.
+///
+/// \tparam Rep1 arithmetic type representing the number of ticks for \p lhs
+/// \tparam Rep2 arithmetic type representing the number of ticks for \p rhs
+/// \tparam Period ratio representing the tick period for \p rhs
+/// \param lhs left-hand factor to multiply by
+/// \param rhs right-hand frequency to multiply
+/// \return frequency with the product of \p lhs and the tick count of \p rhs
+template<typename Rep1, typename Rep2, typename Period>
+constexpr auto operator*(const Rep1& lhs, const frequency<Rep2, Period>& rhs)
+    -> frequency<std::common_type_t<Rep1, Rep2>, Period>
+{
+    using ct = frequency<std::common_type_t<Rep1, Rep2>, Period>;
+    return ct{lhs * ct{rhs}.count()};
+}
+
+/// Divide the tick count of frequency \p lhs by factor \p rhs
+///
+/// The calculation is done using the common type of \p lhs and \p rhs.
+///
+/// \tparam Rep1 arithmetic type representing the number of ticks for \p lhs
+/// \tparam Period ratio representing the tick period for \p lhs
+/// \tparam Rep2 arithmetic type representing the number of ticks for \p rhs
+/// \param lhs left-hand frequency to divide
+/// \param rhs right-hand factor to divide by
+/// \return frequency with the quotient of the tick count of \p lhs and \p rhs
+template<typename Rep1, typename Period, typename Rep2>
+constexpr auto operator/(const frequency<Rep1, Period>& lhs, const Rep2& rhs)
+    -> frequency<std::common_type_t<Rep1, Rep2>, Period>
+{
+    using ct = frequency<std::common_type_t<Rep1, Rep2>, Period>;
+    return ct{ct{lhs}.count() / rhs};
+}
+
+/// Divide the tick count of frequency \p rhs by the tick count of frequency \p lhs
+///
+/// The calculation is done using the common type of \p lhs and \p rhs.
+///
+/// \tparam Rep1 arithmetic type representing the number of ticks for \p lhs
+/// \tparam Period1 ratio representing the tick period for \p lhs
+/// \tparam Rep2 arithmetic type representing the number of ticks for \p rhs
+/// \tparam Period2 ratio representing the tick period for \p rhs
+/// \param lhs left-hand frequency to divide
+/// \param rhs right-hand frequency to divide by
+/// \return quotient of the tick counts of \p lhs and \p rhs
+template<typename Rep1, typename Period1, typename Rep2, typename Period2>
+constexpr auto operator/(const frequency<Rep1, Period1>& lhs, const frequency<Rep2, Period2>& rhs)
+    -> std::common_type_t<Rep1, Rep2>
+{
+    using ct = std::common_type_t<std::decay_t<decltype(lhs)>, std::decay_t<decltype(rhs)>>;
+    return ct{lhs}.count() / ct{rhs}.count();
+}
+
+/// Reduce the tick count of frequency \p lhs by modulus \p rhs
+///
+/// The calculation is done using the common type of \p lhs and \p rhs.
+///
+/// \tparam Rep1 arithmetic type representing the number of ticks for \p lhs
+/// \tparam Period ratio representing the tick period for \p lhs
+/// \tparam Rep2 arithmetic type representing the number of ticks for \p rhs
+/// \param lhs left-hand frequency to reduce
+/// \param rhs right-hand modulus to reduce by
+/// \return frequency with the remainder of the tick count of \p lhs and \p rhs
+template<typename Rep1, typename Period, typename Rep2>
+constexpr auto operator%(const frequency<Rep1, Period>& lhs, const Rep2& rhs)
+    -> frequency<std::common_type_t<Rep1, Rep2>, Period>
+{
+    using ct = frequency<std::common_type_t<Rep1, Rep2>, Period>;
+    return ct{ct{lhs}.count() % rhs};
+}
+
+/// Modulo the tick count of frequency \p rhs by the tick count of frequency \p lhs
+///
+/// The calculation is done using the common type of \p lhs and \p rhs.
+///
+/// \tparam Rep1 arithmetic type representing the number of ticks for \p lhs
+/// \tparam Period1 ratio representing the tick period for \p lhs
+/// \tparam Rep2 arithmetic type representing the number of ticks for \p rhs
+/// \tparam Period2 ratio representing the tick period for \p rhs
+/// \param lhs left-hand frequency to reduce
+/// \param rhs right-hand frequency to reduce by
+/// \return remainder of the tick counts of \p lhs and \p rhs
+template<typename Rep1, typename Period1, typename Rep2, typename Period2>
+constexpr auto operator%(const frequency<Rep1, Period1>& lhs, const frequency<Rep2, Period2>& rhs)
+    -> std::common_type_t<Rep1, Rep2>
+{
+    using ct = std::common_type_t<std::decay_t<decltype(lhs)>, std::decay_t<decltype(rhs)>>;
+    return ct{lhs}.count() % ct{rhs}.count();
+}
+
 /// Inserts a textual representation of \p f into \p os
 ///
 /// The frequency is inserted into \p os as a string after being formatted out-of-line in a stream
