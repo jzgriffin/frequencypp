@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>frequencypp</title>
+  <title>std::common_type&lt;frequencypp::frequency&lt;Rep, Period&gt;&gt; struct | frequencypp</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,600i%7CSource+Code+Pro:400,400i,600" />
   <link rel="stylesheet" href="m-dark+documentation.compiled.css" />
   <link rel="icon" href="favicon-dark.png" type="image/png" />
@@ -33,7 +33,7 @@
             <li><a href="namespaces.html">Namespaces</a></li>
           </ol>
           <ol class="m-col-t-6 m-col-m-none" start="3">
-            <li><a href="annotated.html" id="m-navbar-current">Classes</a></li>
+            <li><a href="annotated.html">Classes</a></li>
             <li><a href="files.html">Files</a></li>
             <li class="m-show-m"><a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
               <use href="#m-doc-search-icon-path" />
@@ -48,38 +48,32 @@
   <div class="m-container m-container-inflatable">
     <div class="m-row">
       <div class="m-col-l-10 m-push-l-1">
-        <h1>Classes</h1>
-        <ul class="m-doc">
-          <li class="m-doc-collapsible">
-            <a href="#" onclick="return toggle(this)">namespace</a> <a href="namespacefrequencypp.html" class="m-doc">frequencypp</a> <span class="m-doc"><span></span></span>
-            <ul class="m-doc">
-              <li>struct <a href="structfrequencypp_1_1frequency.html" class="m-doc">frequency</a> <span class="m-doc">Represents a temporal frequency.</span></li>
-            </ul>
-          </li>
-          <li class="m-doc-collapsible">
-            <a href="#" onclick="return toggle(this)">namespace</a> <a href="namespacestd.html" class="m-doc">std</a> <span class="m-doc"><span></span></span>
-            <ul class="m-doc">
-              <li>struct <a href="structstd_1_1common__type_3_01frequencypp_1_1frequency_3_01Rep_00_01Period_01_4_01_4.html" class="m-doc">common_type&lt;frequencypp::frequency&lt;Rep, Period&gt;&gt;</a> <span class="m-doc">Specialization of std::common_type for two identical <a href="structfrequencypp_1_1frequency.html" class="m-doc">frequencypp::<wbr />frequency</a> types.</span></li>
-              <li>struct <a href="structstd_1_1common__type_3_01frequencypp_1_1frequency_3_01Rep1_00_01Period1_01_4_00_01frequencydbf750872a3c5d059c5a01ff1d6ba502.html" class="m-doc">common_type&lt;frequencypp::frequency&lt;Rep1, Period1&gt;, frequencypp::frequency&lt;Rep2, Period2&gt;&gt;</a> <span class="m-doc">Specialization of std::common_type for <a href="structfrequencypp_1_1frequency.html" class="m-doc">frequencypp::<wbr />frequency</a>.</span></li>
-            </ul>
-          </li>
-        </ul>
-        <script>
-        function toggle(e) {
-            e.parentElement.className = e.parentElement.className == 'm-doc-collapsible' ?
-                'm-doc-expansible' : 'm-doc-collapsible';
-            return false;
-        }
-        /* Collapse all nodes marked as such. Doing it via JS instead of
-           directly in markup so disabling it doesn't harm usability. The list
-           is somehow regenerated on every iteration and shrinks as I change
-           the classes. It's not documented anywhere and I'm not sure if this
-           is the same across browsers, so I am going backwards in that list to
-           be sure. */
-        var collapsed = document.getElementsByClassName("collapsed");
-        for(var i = collapsed.length - 1; i >= 0; --i)
-            collapsed[i].className = 'm-doc-expansible';
-        </script>
+        <h1>
+          <div class="m-doc-include m-code m-inverted m-right-m m-text-right"><span class="cp">#include</span> <a class="cpf" href="frequency_8hpp.html">&lt;frequency.hpp&gt;</a></div>
+          <div class="m-doc-template">template&lt;typename Rep, typename Period&gt;</div>
+          <span class="m-breadcrumb"><a href="namespacestd.html">std</a>::<wbr/></span>common_type&lt;frequencypp::frequency&lt;Rep, Period&gt;&gt; <span class="m-thin">struct</span>
+        </h1>
+        <p>Specialization of std::common_type for two identical <a href="structfrequencypp_1_1frequency.html" class="m-doc">frequencypp::<wbr />frequency</a> types.</p>
+        <div class="m-block m-default">
+          <h3>Contents</h3>
+          <ul>
+            <li>
+              Reference
+              <ul>
+                <li><a href="#pub-types">Public types</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <section id="pub-types">
+          <h2><a href="#pub-types">Public types</a></h2>
+          <dl class="m-doc">
+            <dt id="a28e3a97eb36c1547a56e9f6893a65467">
+              using <a href="#a28e3a97eb36c1547a56e9f6893a65467" class="m-doc-self">type</a> = <a href="structfrequencypp_1_1frequency.html" class="m-doc">frequencypp::<wbr />frequency</a>&lt;std::common_type_t&lt;Rep&gt;, typename Period::type&gt;
+            </dt>
+            <dd>Common type of two identical <a href="structfrequencypp_1_1frequency.html" class="m-doc">frequencypp::<wbr />frequency</a> types.</dd>
+          </dl>
+        </section>
       </div>
     </div>
   </div>
