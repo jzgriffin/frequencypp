@@ -16,6 +16,7 @@ include(Catch)
 
 add_executable(frequencypp_test
     source/frequencypp_test.cpp
+    source/type.cpp
 )
 target_link_libraries(frequencypp_test
     PRIVATE
