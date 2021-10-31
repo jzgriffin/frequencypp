@@ -133,6 +133,11 @@
           <h2><a href="#func-members">Functions</a></h2>
           <dl class="m-doc">
             <dt>
+              <div class="m-doc-template">template&lt;typename ToFrequency, typename Rep, typename Period&gt;</div>
+              <span class="m-doc-wrap-bumper">auto <a href="#a4341fc74ff5eee8a40da53a794584a65" class="m-doc">frequency_cast</a>(</span><span class="m-doc-wrap">const <a href="structfrequencypp_1_1frequency.html" class="m-doc">frequency</a>&lt;Rep, Period&gt;&amp; f) -&gt; std::enable_if_t&lt; detail::is_frequency_v&lt; ToFrequency &gt;, ToFrequency &gt; <span class="m-label m-flat m-primary">constexpr</span></span>
+            </dt>
+            <dd>Convert a <a href="structfrequencypp_1_1frequency.html#a3b3fd96425613b464bd49688809a083d" class="m-doc">frequency::<wbr />frequency</a> to a frequency of different type <code>ToFrequency</code>.</dd>
+            <dt>
               <span class="m-doc-wrap-bumper">auto <a href="namespacefrequencypp_1_1literals.html#a20fa0dbfb5ff6b0e407597a5a0318126" class="m-doc">operator&quot;&quot;_nHz</a>(</span><span class="m-doc-wrap">unsigned long long r) -&gt; nanohertz <span class="m-label m-flat m-primary">constexpr</span></span>
             </dt>
             <dd>Literal suffix for frequencies of type <a href="namespacefrequencypp.html#ae60e077186de041eb101a41db275fb82" class="m-doc">frequencypp::<wbr />nanohertz</a>.</dd>
@@ -270,6 +275,54 @@
               <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="frequency_8hpp.html">&lt;frequencypp/frequency.hpp&gt;</a></div>
             </h3>
             <p>Frequency specified in petahertz (PHz)</p>
+          </div></section>
+        </section>
+        <section>
+          <h2>Function documentation</h2>
+          <section class="m-doc-details" id="a4341fc74ff5eee8a40da53a794584a65"><div>
+            <h3>
+              <div class="m-doc-include m-code m-inverted m-right-m m-text-right"><span class="cp">#include</span> <a class="cpf" href="frequency_8hpp.html">&lt;frequencypp/frequency.hpp&gt;</a></div>
+              <div class="m-doc-template">
+                template&lt;typename ToFrequency, typename Rep, typename Period&gt;
+              </div>
+              <span class="m-doc-wrap-bumper">auto frequencypp::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a4341fc74ff5eee8a40da53a794584a65" class="m-doc-self">frequency_cast</a>(</span><span class="m-doc-wrap">const <a href="structfrequencypp_1_1frequency.html" class="m-doc">frequency</a>&lt;Rep, Period&gt;&amp; f) -&gt; std::enable_if_t&lt; detail::is_frequency_v&lt; ToFrequency &gt;, ToFrequency &gt; <span class="m-label m-primary">constexpr</span></span></span>
+            </h3>
+            <p>Convert a <a href="structfrequencypp_1_1frequency.html#a3b3fd96425613b464bd49688809a083d" class="m-doc">frequency::<wbr />frequency</a> to a frequency of different type <code>ToFrequency</code>.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Template parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">ToFrequency</td>
+                  <td><a href="structfrequencypp_1_1frequency.html#a3b3fd96425613b464bd49688809a083d" class="m-doc">frequency::<wbr />frequency</a> type to convert to</td>
+                </tr>
+                <tr>
+                  <td>Rep</td>
+                  <td>arithmetic type representing the number of ticks for <code>f</code></td>
+                </tr>
+                <tr>
+                  <td>Period</td>
+                  <td>ratio representing the tick period for <code>f</code></td>
+                </tr>
+              </tbody>
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>f</td>
+                  <td>frequency to convert</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td><code>f</code> converted to a frequency of type <code>ToFrequency</code></td>
+                </tr>
+              </tfoot>
+            </table>
+<p>No implicit conversions are used. Computations are done in the widest type available and converted, as if by <code>static_cast</code>, to the result type only when finished.</p>
           </div></section>
         </section>
       </div>

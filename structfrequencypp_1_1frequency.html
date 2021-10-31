@@ -135,6 +135,11 @@
               <span class="m-doc-wrap-bumper"><a href="#a28f97015cc4d611fa45acc1b66457583" class="m-doc">frequency</a>(</span><span class="m-doc-wrap">const Rep2&amp; r) <span class="m-label m-flat m-info">explicit</span>  <span class="m-label m-flat m-primary">constexpr</span></span>
             </dt>
             <dd>Construct the frequency with <code>r</code> ticks.</dd>
+            <dt>
+              <div class="m-doc-template">template&lt;typename Rep2, typename Period2, typename = std::enable_if_t&lt;           std::chrono::treat_as_floating_point_v&lt;               <a href="structfrequencypp_1_1frequency.html#a2e7ea10a475ac224d5a991096ab969da" class="m-doc">rep</a>&gt; || (std::ratio_divide&lt;Period2, <a href="structfrequencypp_1_1frequency.html#aacd722d3b6f6017be5b86a00d65eafa6" class="m-doc">period</a>&gt;::den == 1&amp;&amp; !std::chrono::treat_as_floating_point_v&lt;Rep2&gt;)&gt;&gt;</div>
+              <span class="m-doc-wrap-bumper"><a href="#aa53c329477908aecaecf6995a4c8c9c7" class="m-doc">frequency</a>(</span><span class="m-doc-wrap">const <a href="structfrequencypp_1_1frequency.html" class="m-doc">frequency</a>&lt;Rep2, Period2&gt;&amp; f) <span class="m-label m-flat m-primary">constexpr</span></span>
+            </dt>
+            <dd>Construct the frequency by converting <code>f</code> to an appropriate period and tick count, as if by <code>frequencypp::frequency_cast&lt;frequency&gt;(f)</code>.<a href="structfrequencypp_1_1frequency.html#a3963aa36e14e3d3b600553b631a383c9" class="m-doc">count()</a></dd>
             <dt id="a405d29ecd5fb4afd9980bb50c0705837">
               <span class="m-doc-wrap-bumper"><a href="#a405d29ecd5fb4afd9980bb50c0705837" class="m-doc-self">~frequency</a>(</span><span class="m-doc-wrap">) <span class="m-label m-flat m-info">defaulted</span></span>
             </dt>
@@ -245,6 +250,31 @@
                 <tr>
                   <td>r</td>
                   <td>tick count</td>
+                </tr>
+              </tbody>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="aa53c329477908aecaecf6995a4c8c9c7"><div>
+            <h3>
+              <div class="m-doc-template">
+                template&lt;typename Rep, typename Period&gt;
+                template&lt;typename Rep2, typename Period2, typename = std::enable_if_t&lt;           std::chrono::treat_as_floating_point_v&lt;               <a href="structfrequencypp_1_1frequency.html#a2e7ea10a475ac224d5a991096ab969da" class="m-doc">rep</a>&gt; || (std::ratio_divide&lt;Period2, <a href="structfrequencypp_1_1frequency.html#aacd722d3b6f6017be5b86a00d65eafa6" class="m-doc">period</a>&gt;::den == 1&amp;&amp; !std::chrono::treat_as_floating_point_v&lt;Rep2&gt;)&gt;&gt;
+              </div>
+              <span class="m-doc-wrap-bumper"> frequencypp::<wbr />frequency&lt;Rep, Period&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aa53c329477908aecaecf6995a4c8c9c7" class="m-doc-self">frequency</a>(</span><span class="m-doc-wrap">const <a href="structfrequencypp_1_1frequency.html" class="m-doc">frequency</a>&lt;Rep2, Period2&gt;&amp; f) <span class="m-label m-primary">constexpr</span></span></span>
+            </h3>
+            <p>Construct the frequency by converting <code>f</code> to an appropriate period and tick count, as if by <code>frequencypp::frequency_cast&lt;frequency&gt;(f)</code>.<a href="structfrequencypp_1_1frequency.html#a3963aa36e14e3d3b600553b631a383c9" class="m-doc">count()</a></p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Template parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">Rep2</td>
+                  <td>arithmetic type representing the number of ticks</td>
+                </tr>
+                <tr>
+                  <td>Period2</td>
+                  <td>ratio representing the tick period</td>
                 </tr>
               </tbody>
             </table>
