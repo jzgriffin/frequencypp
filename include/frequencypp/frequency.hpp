@@ -128,12 +128,12 @@ struct frequency_values
     }
 };
 
-/// Convert a \ref frequency::frequency to a frequency of different type \p ToFrequency
+/// Convert a \ref frequencypp::frequency to a frequency of different type \p ToFrequency
 ///
 /// No implicit conversions are used.  Computations are done in the widest type available and
 /// converted, as if by \c static_cast, to the result type only when finished.
 ///
-/// \tparam ToFrequency \ref frequency::frequency type to convert to
+/// \tparam ToFrequency \ref frequencypp::frequency type to convert to
 /// \tparam Rep arithmetic type representing the number of ticks for \p f
 /// \tparam Period ratio representing the tick period for \p f
 /// \param f frequency to convert
@@ -654,7 +654,7 @@ constexpr auto operator%(const frequency<Rep1, Period1>& lhs, const frequency<Re
 
 /// Compute the floor of frequency \p f
 ///
-/// \tparam ToFrequency \ref frequency::frequency type to convert to
+/// \tparam ToFrequency \ref frequencypp::frequency type to convert to
 /// \tparam Rep arithmetic type representing the number of ticks for \p f
 /// \tparam Period ratio representing the tick period for \p f
 /// \param f frequency to convert
@@ -671,7 +671,7 @@ constexpr auto floor(const frequency<Rep, Period>& f) -> ToFrequency
 
 /// Compute the ceiling of frequency \p f
 ///
-/// \tparam ToFrequency \ref frequency::frequency type to convert to
+/// \tparam ToFrequency \ref frequencypp::frequency type to convert to
 /// \tparam Rep arithmetic type representing the number of ticks for \p f
 /// \tparam Period ratio representing the tick period for \p f
 /// \param f frequency to convert
@@ -688,7 +688,7 @@ constexpr auto ceil(const frequency<Rep, Period>& f) -> ToFrequency
 
 /// Round frequency \p f to its closest representation in \p ToFrequency
 ///
-/// \tparam ToFrequency \ref frequency::frequency type to convert to
+/// \tparam ToFrequency \ref frequencypp::frequency type to convert to
 /// \tparam Rep arithmetic type representing the number of ticks for \p f
 /// \tparam Period ratio representing the tick period for \p f
 /// \param f frequency to convert
