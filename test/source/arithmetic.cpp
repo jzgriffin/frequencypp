@@ -40,3 +40,37 @@ TEST_CASE("negation returns the opposite frequency", "[arithmetic]")
     REQUIRE(-(-1.5_Hz) == 1.5_Hz);
     REQUIRE(-(1.5_Hz) == -1.5_Hz);
 }
+
+TEST_CASE("increment changes tick count", "[arithmetic]")
+{
+    using namespace ::frequencypp;
+
+    auto f1 = frequency<int>{-1};
+    REQUIRE((f1++).count() == -1);
+    REQUIRE(f1.count() == 0);
+    REQUIRE((++f1).count() == 1);
+    REQUIRE(f1.count() == 1);
+
+    auto f2 = frequency<float>{-0.5F};
+    REQUIRE((f2++).count() == -0.5F);
+    REQUIRE(f2.count() == 0.5F);
+    REQUIRE((++f2).count() == 1.5F);
+    REQUIRE(f2.count() == 1.5F);
+}
+
+TEST_CASE("decrement changes tick count", "[arithmetic]")
+{
+    using namespace ::frequencypp;
+
+    auto f1 = frequency<int>{1};
+    REQUIRE((f1--).count() == 1);
+    REQUIRE(f1.count() == 0);
+    REQUIRE((--f1).count() == -1);
+    REQUIRE(f1.count() == -1);
+
+    auto f2 = frequency<float>{1.5F};
+    REQUIRE((f2--).count() == 1.5F);
+    REQUIRE(f2.count() == 0.5F);
+    REQUIRE((--f2).count() == -0.5F);
+    REQUIRE(f2.count() == -0.5F);
+}

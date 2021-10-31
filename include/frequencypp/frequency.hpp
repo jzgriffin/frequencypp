@@ -276,6 +276,40 @@ public:
     {
         return std::common_type_t<frequency>{-count_};
     }
+
+    /// Increment the number of ticks for this frequency
+    ///
+    /// \return reference to this frequency after modification
+    constexpr auto operator++() -> frequency&
+    {
+        ++count_;
+        return *this;
+    }
+
+    /// Increment the number of ticks for this frequency
+    ///
+    /// \return copy of this frequency before modification
+    constexpr auto operator++(int) -> frequency
+    {
+        return frequency{count_++};
+    }
+
+    /// Decrement the number of ticks for this frequency
+    ///
+    /// \return reference to this frequency after modification
+    constexpr auto operator--() -> frequency&
+    {
+        --count_;
+        return *this;
+    }
+
+    /// Decrement the number of ticks for this frequency
+    ///
+    /// \return copy of this frequency before modification
+    constexpr auto operator--(int) -> frequency
+    {
+        return frequency{count_--};
+    }
 };
 
 // Comparison
