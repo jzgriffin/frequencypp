@@ -23,7 +23,9 @@
 #include <cstdint>
 #include <limits>
 #include <numeric>
+#include <ostream>
 #include <ratio>
+#include <sstream>
 #include <type_traits>
 
 // Forward declaration of the frequencypp::frequency type
@@ -432,6 +434,66 @@ constexpr auto operator>=(const frequency<Rep1, Period1>& lhs, const frequency<R
     -> bool
 {
     return !(lhs < rhs);
+}
+
+/// Inserts a textual representation of \p f into \p os
+///
+/// The frequency is inserted into \p os as a string after being formatted out-of-line in a stream
+/// that matches the flags, locale, and precision of \p os.
+///
+/// \tparam CharT character type of the stream
+/// \tparam Traits character traits for the stream
+/// \tparam Rep arithmetic type representing the number of ticks
+/// \tparam Period ratio representing the tick period
+/// \param os stream to insert into
+/// \param f frequency to insert
+/// \return reference to \p os
+template<typename CharT, typename Traits, typename Rep, typename Period>
+auto operator<<(std::basic_ostream<CharT, Traits>& os, const frequency<Rep, Period>& f)
+    -> std::basic_ostream<CharT, Traits>&
+{
+    std::basic_ostringstream<CharT, Traits> s;
+    s.flags(os.flags());
+    s.imbue(os.getloc());
+    s.precision(os.precision());
+    s << f.count();
+
+    // Select the unit suffix at compile-time
+    if constexpr (std::ratio_equal_v<Period, std::nano>) {
+        s << "nHz";
+    }
+    else if constexpr (std::ratio_equal_v<Period, std::micro>) {
+        s << "µHz";
+    }
+    else if constexpr (std::ratio_equal_v<Period, std::milli>) {
+        s << "mHz";
+    }
+    else if constexpr (std::ratio_equal_v<Period, std::ratio<1>>) {
+        s << "Hz";
+    }
+    else if constexpr (std::ratio_equal_v<Period, std::kilo>) {
+        s << "KHz";
+    }
+    else if constexpr (std::ratio_equal_v<Period, std::mega>) {
+        s << "MHz";
+    }
+    else if constexpr (std::ratio_equal_v<Period, std::giga>) {
+        s << "GHz";
+    }
+    else if constexpr (std::ratio_equal_v<Period, std::tera>) {
+        s << "THz";
+    }
+    else if constexpr (std::ratio_equal_v<Period, std::peta>) {
+        s << "PHz";
+    }
+    else if constexpr (Period::type::den == 1) {
+        s << '[' << Period::type::num << "]Hz";
+    }
+    else {
+        s << '[' << Period::type::num << '/' << Period::type::den << "]Hz";
+    }
+
+    return os << s.str();
 }
 
 // SI units
