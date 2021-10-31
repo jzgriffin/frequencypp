@@ -165,6 +165,22 @@
               <span class="m-doc-wrap-bumper">auto <a href="#ad9be7d34b0a7f443d29b2347498256e1" class="m-doc">operator-</a>(</span><span class="m-doc-wrap">) const -&gt; std::common_type_t&lt; frequency &gt; <span class="m-label m-flat m-primary">constexpr</span></span>
             </dt>
             <dd>Get the negation of the frequency.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a988d6db19a5fbe5a129acd003050c207" class="m-doc">operator++</a>(</span><span class="m-doc-wrap">) -&gt; frequency &amp; <span class="m-label m-flat m-primary">constexpr</span></span>
+            </dt>
+            <dd>Increment the number of ticks for this frequency.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ad75e2fd1601f6102c4a785c47309147f" class="m-doc">operator++</a>(</span><span class="m-doc-wrap">int) -&gt; frequency <span class="m-label m-flat m-primary">constexpr</span></span>
+            </dt>
+            <dd>Increment the number of ticks for this frequency.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#aafcfc39d170b653ca2905b425083cc0e" class="m-doc">operator--</a>(</span><span class="m-doc-wrap">) -&gt; frequency &amp; <span class="m-label m-flat m-primary">constexpr</span></span>
+            </dt>
+            <dd>Decrement the number of ticks for this frequency.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ac3316f3b6e11ae8d062561c044e66eb5" class="m-doc">operator--</a>(</span><span class="m-doc-wrap">int) -&gt; frequency <span class="m-label m-flat m-primary">constexpr</span></span>
+            </dt>
+            <dd>Decrement the number of ticks for this frequency.</dd>
           </dl>
         </section>
         <section id="pub-attribs">
@@ -334,6 +350,74 @@
                 <tr>
                   <th style="width: 1%">Returns</th>
                   <td>negation of the frequency</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="a988d6db19a5fbe5a129acd003050c207"><div>
+            <h3>
+              <div class="m-doc-template">
+                template&lt;typename Rep, typename Period&gt;
+              </div>
+              <span class="m-doc-wrap-bumper">auto frequencypp::<wbr />frequency&lt;Rep, Period&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a988d6db19a5fbe5a129acd003050c207" class="m-doc-self">operator++</a>(</span><span class="m-doc-wrap">) -&gt; frequency &amp; <span class="m-label m-primary">constexpr</span></span></span>
+            </h3>
+            <p>Increment the number of ticks for this frequency.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>reference to this frequency after modification</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="ad75e2fd1601f6102c4a785c47309147f"><div>
+            <h3>
+              <div class="m-doc-template">
+                template&lt;typename Rep, typename Period&gt;
+              </div>
+              <span class="m-doc-wrap-bumper">auto frequencypp::<wbr />frequency&lt;Rep, Period&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ad75e2fd1601f6102c4a785c47309147f" class="m-doc-self">operator++</a>(</span><span class="m-doc-wrap">int) -&gt; frequency <span class="m-label m-primary">constexpr</span></span></span>
+            </h3>
+            <p>Increment the number of ticks for this frequency.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>copy of this frequency before modification</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="aafcfc39d170b653ca2905b425083cc0e"><div>
+            <h3>
+              <div class="m-doc-template">
+                template&lt;typename Rep, typename Period&gt;
+              </div>
+              <span class="m-doc-wrap-bumper">auto frequencypp::<wbr />frequency&lt;Rep, Period&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aafcfc39d170b653ca2905b425083cc0e" class="m-doc-self">operator--</a>(</span><span class="m-doc-wrap">) -&gt; frequency &amp; <span class="m-label m-primary">constexpr</span></span></span>
+            </h3>
+            <p>Decrement the number of ticks for this frequency.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>reference to this frequency after modification</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="ac3316f3b6e11ae8d062561c044e66eb5"><div>
+            <h3>
+              <div class="m-doc-template">
+                template&lt;typename Rep, typename Period&gt;
+              </div>
+              <span class="m-doc-wrap-bumper">auto frequencypp::<wbr />frequency&lt;Rep, Period&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ac3316f3b6e11ae8d062561c044e66eb5" class="m-doc-self">operator--</a>(</span><span class="m-doc-wrap">int) -&gt; frequency <span class="m-label m-primary">constexpr</span></span></span>
+            </h3>
+            <p>Decrement the number of ticks for this frequency.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>copy of this frequency before modification</td>
                 </tr>
               </tfoot>
             </table>
