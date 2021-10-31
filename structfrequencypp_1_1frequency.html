@@ -157,6 +157,14 @@
               <span class="m-doc-wrap-bumper">auto <a href="#a3963aa36e14e3d3b600553b631a383c9" class="m-doc">count</a>(</span><span class="m-doc-wrap">) const -&gt; rep <span class="m-label m-flat m-primary">constexpr</span></span>
             </dt>
             <dd>Get the number of ticks.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ae9bb971bc360558605b04f2085a63ae4" class="m-doc">operator+</a>(</span><span class="m-doc-wrap">) const -&gt; std::common_type_t&lt; frequency &gt; <span class="m-label m-flat m-primary">constexpr</span></span>
+            </dt>
+            <dd>Get the reinforcement of the frequency.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ad9be7d34b0a7f443d29b2347498256e1" class="m-doc">operator-</a>(</span><span class="m-doc-wrap">) const -&gt; std::common_type_t&lt; frequency &gt; <span class="m-label m-flat m-primary">constexpr</span></span>
+            </dt>
+            <dd>Get the negation of the frequency.</dd>
           </dl>
         </section>
         <section id="pub-attribs">
@@ -292,6 +300,40 @@
                 <tr>
                   <th style="width: 1%">Returns</th>
                   <td>number of ticks</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="ae9bb971bc360558605b04f2085a63ae4"><div>
+            <h3>
+              <div class="m-doc-template">
+                template&lt;typename Rep, typename Period&gt;
+              </div>
+              <span class="m-doc-wrap-bumper">auto frequencypp::<wbr />frequency&lt;Rep, Period&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ae9bb971bc360558605b04f2085a63ae4" class="m-doc-self">operator+</a>(</span><span class="m-doc-wrap">) const -&gt; std::common_type_t&lt; frequency &gt; <span class="m-label m-primary">constexpr</span></span></span>
+            </h3>
+            <p>Get the reinforcement of the frequency.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>reinforcement of the frequency</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="ad9be7d34b0a7f443d29b2347498256e1"><div>
+            <h3>
+              <div class="m-doc-template">
+                template&lt;typename Rep, typename Period&gt;
+              </div>
+              <span class="m-doc-wrap-bumper">auto frequencypp::<wbr />frequency&lt;Rep, Period&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ad9be7d34b0a7f443d29b2347498256e1" class="m-doc-self">operator-</a>(</span><span class="m-doc-wrap">) const -&gt; std::common_type_t&lt; frequency &gt; <span class="m-label m-primary">constexpr</span></span></span>
+            </h3>
+            <p>Get the negation of the frequency.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>negation of the frequency</td>
                 </tr>
               </tfoot>
             </table>
