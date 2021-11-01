@@ -1,7 +1,10 @@
 # frequencypp
 
 `frequencypp` is a C++17 library implementing a temporal frequency type
-that is compatible with `std::chrono`.
+that is compatible with `std::chrono`.  Values of
+`frequencypp::frequency` can be converted to/from values of
+`std::chrono::duration`.  The conversion accounts for differences in
+tick representation and period.
 
 # Building and installing
 
