@@ -162,6 +162,28 @@ constexpr auto frequency_cast(const frequency<Rep, Period>& f)
         / static_cast<common_rep>(common_period::den))};
 }
 
+/// Convert a \c std::chrono::duration to the equivalent frequency type \p ToFrequency
+///
+/// No implicit conversions are used.  Computations are done in the widest type available and
+/// converted, as if by \c static_cast, to the result type only when finished.
+///
+/// \tparam ToFrequency \ref frequencypp::frequency type to convert to
+/// \tparam Rep arithmetic type representing the number of ticks for \p d
+/// \tparam Period ratio representing the tick period for \p d
+/// \param d duration to convert
+/// \return \p d converted to a frequency of type \p ToFrequency
+template<typename ToFrequency, typename Rep, typename Period>
+constexpr auto frequency_cast(const std::chrono::duration<Rep, Period>& d)
+    -> std::enable_if_t<detail::is_frequency_v<ToFrequency>, ToFrequency>
+{
+    using to_rep = typename ToFrequency::rep;
+    using to_period = typename ToFrequency::period;
+    using common_rep = std::common_type_t<Rep, to_rep, std::intmax_t>;
+    using common_period = std::ratio_multiply<Period, to_period>;
+    return ToFrequency{static_cast<to_rep>(static_cast<common_rep>(common_period::den)
+        / (static_cast<common_rep>(common_period::num) * static_cast<common_rep>(d.count())))};
+}
+
 /// Convert a \ref frequencypp::frequency to the equivalent duration type \p ToDuration
 ///
 /// No implicit conversions are used.  Computations are done in the widest type available and
