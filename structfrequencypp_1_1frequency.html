@@ -181,6 +181,32 @@
               <span class="m-doc-wrap-bumper">auto <a href="#ac3316f3b6e11ae8d062561c044e66eb5" class="m-doc">operator--</a>(</span><span class="m-doc-wrap">int) -&gt; frequency <span class="m-label m-flat m-primary">constexpr</span></span>
             </dt>
             <dd>Decrement the number of ticks for this frequency.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#adeb7764ad711d0c4f7fcc6c0c0cd78f2" class="m-doc">operator+=</a>(</span><span class="m-doc-wrap">const <a href="structfrequencypp_1_1frequency.html" class="m-doc">frequency</a>&amp; rhs) -&gt; frequency &amp; <span class="m-label m-flat m-primary">constexpr</span></span>
+            </dt>
+            <dd>Add the frequency <code>rhs</code> to this frequency.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a51050cc89b612359333d2343d2202fe3" class="m-doc">operator-=</a>(</span><span class="m-doc-wrap">const <a href="structfrequencypp_1_1frequency.html" class="m-doc">frequency</a>&amp; rhs) -&gt; frequency &amp; <span class="m-label m-flat m-primary">constexpr</span></span>
+            </dt>
+            <dd>Subtract the frequency <code>rhs</code> from this frequency.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a7ce0356c9a710a7021658ddf2acfb7ea" class="m-doc">operator*=</a>(</span><span class="m-doc-wrap">const <a href="structfrequencypp_1_1frequency.html#a2e7ea10a475ac224d5a991096ab969da" class="m-doc">rep</a>&amp; rhs) -&gt; frequency &amp; <span class="m-label m-flat m-primary">constexpr</span></span>
+            </dt>
+            <dd>Multiply this frequency by factor <code>rhs</code>.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a932d078664628f315aa9923f644e8046" class="m-doc">operator/=</a>(</span><span class="m-doc-wrap">const <a href="structfrequencypp_1_1frequency.html#a2e7ea10a475ac224d5a991096ab969da" class="m-doc">rep</a>&amp; rhs) -&gt; frequency &amp; <span class="m-label m-flat m-primary">constexpr</span></span>
+            </dt>
+            <dd>Divide this frequency by factor <code>rhs</code>.</dd>
+            <dt>
+              <div class="m-doc-template">template&lt;typename Rep2 = <a href="structfrequencypp_1_1frequency.html#a2e7ea10a475ac224d5a991096ab969da" class="m-doc">rep</a>&gt;</div>
+              <span class="m-doc-wrap-bumper">auto <a href="#a1631c2a16010ad4250d95b885daab7f9" class="m-doc">operator%=</a>(</span><span class="m-doc-wrap">const <a href="structfrequencypp_1_1frequency.html#a2e7ea10a475ac224d5a991096ab969da" class="m-doc">rep</a>&amp; rhs) -&gt; std::enable_if_t&lt;!std::chrono::treat_as_floating_point_v&lt; Rep2 &gt;, frequency &amp; &gt; <span class="m-label m-flat m-primary">constexpr</span></span>
+            </dt>
+            <dd>Reduce this frequency by modulus <code>rhs</code>.</dd>
+            <dt>
+              <div class="m-doc-template">template&lt;typename Rep2 = <a href="structfrequencypp_1_1frequency.html#a2e7ea10a475ac224d5a991096ab969da" class="m-doc">rep</a>&gt;</div>
+              <span class="m-doc-wrap-bumper">auto <a href="#a8e1c63ca52d38cfd4a5a6df932012dff" class="m-doc">operator%=</a>(</span><span class="m-doc-wrap">const <a href="structfrequencypp_1_1frequency.html" class="m-doc">frequency</a>&amp; rhs) -&gt; std::enable_if_t&lt;!std::chrono::treat_as_floating_point_v&lt; Rep2 &gt;, frequency &amp; &gt; <span class="m-label m-flat m-primary">constexpr</span></span>
+            </dt>
+            <dd>Reduce this frequency by modulus <code>rhs</code>.</dd>
           </dl>
         </section>
         <section id="pub-attribs">
@@ -418,6 +444,164 @@
                 <tr>
                   <th style="width: 1%">Returns</th>
                   <td>copy of this frequency before modification</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="adeb7764ad711d0c4f7fcc6c0c0cd78f2"><div>
+            <h3>
+              <div class="m-doc-template">
+                template&lt;typename Rep, typename Period&gt;
+              </div>
+              <span class="m-doc-wrap-bumper">auto frequencypp::<wbr />frequency&lt;Rep, Period&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#adeb7764ad711d0c4f7fcc6c0c0cd78f2" class="m-doc-self">operator+=</a>(</span><span class="m-doc-wrap">const <a href="structfrequencypp_1_1frequency.html" class="m-doc">frequency</a>&amp; rhs) -&gt; frequency &amp; <span class="m-label m-primary">constexpr</span></span></span>
+            </h3>
+            <p>Add the frequency <code>rhs</code> to this frequency.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">rhs</td>
+                  <td>right-hand frequency to add</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>reference to this frequency after modification</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="a51050cc89b612359333d2343d2202fe3"><div>
+            <h3>
+              <div class="m-doc-template">
+                template&lt;typename Rep, typename Period&gt;
+              </div>
+              <span class="m-doc-wrap-bumper">auto frequencypp::<wbr />frequency&lt;Rep, Period&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a51050cc89b612359333d2343d2202fe3" class="m-doc-self">operator-=</a>(</span><span class="m-doc-wrap">const <a href="structfrequencypp_1_1frequency.html" class="m-doc">frequency</a>&amp; rhs) -&gt; frequency &amp; <span class="m-label m-primary">constexpr</span></span></span>
+            </h3>
+            <p>Subtract the frequency <code>rhs</code> from this frequency.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">rhs</td>
+                  <td>right-hand frequency to subtract</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>reference to this frequency after modification</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="a7ce0356c9a710a7021658ddf2acfb7ea"><div>
+            <h3>
+              <div class="m-doc-template">
+                template&lt;typename Rep, typename Period&gt;
+              </div>
+              <span class="m-doc-wrap-bumper">auto frequencypp::<wbr />frequency&lt;Rep, Period&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a7ce0356c9a710a7021658ddf2acfb7ea" class="m-doc-self">operator*=</a>(</span><span class="m-doc-wrap">const <a href="structfrequencypp_1_1frequency.html#a2e7ea10a475ac224d5a991096ab969da" class="m-doc">rep</a>&amp; rhs) -&gt; frequency &amp; <span class="m-label m-primary">constexpr</span></span></span>
+            </h3>
+            <p>Multiply this frequency by factor <code>rhs</code>.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">rhs</td>
+                  <td>right-hand factor to multiply by</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>reference to this frequency after modification</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="a932d078664628f315aa9923f644e8046"><div>
+            <h3>
+              <div class="m-doc-template">
+                template&lt;typename Rep, typename Period&gt;
+              </div>
+              <span class="m-doc-wrap-bumper">auto frequencypp::<wbr />frequency&lt;Rep, Period&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a932d078664628f315aa9923f644e8046" class="m-doc-self">operator/=</a>(</span><span class="m-doc-wrap">const <a href="structfrequencypp_1_1frequency.html#a2e7ea10a475ac224d5a991096ab969da" class="m-doc">rep</a>&amp; rhs) -&gt; frequency &amp; <span class="m-label m-primary">constexpr</span></span></span>
+            </h3>
+            <p>Divide this frequency by factor <code>rhs</code>.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">rhs</td>
+                  <td>right-hand factor to divide by</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>reference to this frequency after modification</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="a1631c2a16010ad4250d95b885daab7f9"><div>
+            <h3>
+              <div class="m-doc-template">
+                template&lt;typename Rep, typename Period&gt;
+                template&lt;typename Rep2 = <a href="structfrequencypp_1_1frequency.html#a2e7ea10a475ac224d5a991096ab969da" class="m-doc">rep</a>&gt;
+              </div>
+              <span class="m-doc-wrap-bumper">auto frequencypp::<wbr />frequency&lt;Rep, Period&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a1631c2a16010ad4250d95b885daab7f9" class="m-doc-self">operator%=</a>(</span><span class="m-doc-wrap">const <a href="structfrequencypp_1_1frequency.html#a2e7ea10a475ac224d5a991096ab969da" class="m-doc">rep</a>&amp; rhs) -&gt; std::enable_if_t&lt;!std::chrono::treat_as_floating_point_v&lt; Rep2 &gt;, frequency &amp; &gt; <span class="m-label m-primary">constexpr</span></span></span>
+            </h3>
+            <p>Reduce this frequency by modulus <code>rhs</code>.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">rhs</td>
+                  <td>right-hand modulus</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>reference to this frequency after modification</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="a8e1c63ca52d38cfd4a5a6df932012dff"><div>
+            <h3>
+              <div class="m-doc-template">
+                template&lt;typename Rep, typename Period&gt;
+                template&lt;typename Rep2 = <a href="structfrequencypp_1_1frequency.html#a2e7ea10a475ac224d5a991096ab969da" class="m-doc">rep</a>&gt;
+              </div>
+              <span class="m-doc-wrap-bumper">auto frequencypp::<wbr />frequency&lt;Rep, Period&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a8e1c63ca52d38cfd4a5a6df932012dff" class="m-doc-self">operator%=</a>(</span><span class="m-doc-wrap">const <a href="structfrequencypp_1_1frequency.html" class="m-doc">frequency</a>&amp; rhs) -&gt; std::enable_if_t&lt;!std::chrono::treat_as_floating_point_v&lt; Rep2 &gt;, frequency &amp; &gt; <span class="m-label m-primary">constexpr</span></span></span>
+            </h3>
+            <p>Reduce this frequency by modulus <code>rhs</code>.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">rhs</td>
+                  <td>right-hand modulus</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>reference to this frequency after modification</td>
                 </tr>
               </tfoot>
             </table>

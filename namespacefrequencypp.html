@@ -136,7 +136,17 @@
               <div class="m-doc-template">template&lt;typename ToFrequency, typename Rep, typename Period&gt;</div>
               <span class="m-doc-wrap-bumper">auto <a href="#a4341fc74ff5eee8a40da53a794584a65" class="m-doc">frequency_cast</a>(</span><span class="m-doc-wrap">const <a href="structfrequencypp_1_1frequency.html" class="m-doc">frequency</a>&lt;Rep, Period&gt;&amp; f) -&gt; std::enable_if_t&lt; detail::is_frequency_v&lt; ToFrequency &gt;, ToFrequency &gt; <span class="m-label m-flat m-primary">constexpr</span></span>
             </dt>
-            <dd>Convert a <a href="structfrequencypp_1_1frequency.html#a3b3fd96425613b464bd49688809a083d" class="m-doc">frequency::<wbr />frequency</a> to a frequency of different type <code>ToFrequency</code>.</dd>
+            <dd>Convert a <a href="structfrequencypp_1_1frequency.html" class="m-doc">frequencypp::<wbr />frequency</a> to a frequency of different type <code>ToFrequency</code>.</dd>
+            <dt>
+              <div class="m-doc-template">template&lt;typename ToFrequency, typename Rep, typename Period&gt;</div>
+              <span class="m-doc-wrap-bumper">auto <a href="#a76dae81ea6eb6c7fafa69ec5b13d0b05" class="m-doc">frequency_cast</a>(</span><span class="m-doc-wrap">const std::chrono::duration&lt;Rep, Period&gt;&amp; d) -&gt; std::enable_if_t&lt; detail::is_frequency_v&lt; ToFrequency &gt;, ToFrequency &gt; <span class="m-label m-flat m-primary">constexpr</span></span>
+            </dt>
+            <dd>Convert a <code>std::chrono::duration</code> to the equivalent frequency type <code>ToFrequency</code>.</dd>
+            <dt>
+              <div class="m-doc-template">template&lt;typename ToDuration, typename Rep, typename Period&gt;</div>
+              <span class="m-doc-wrap-bumper">auto <a href="#a29e1aa026253e73108fc9ab7a6479ec1" class="m-doc">duration_cast</a>(</span><span class="m-doc-wrap">const <a href="structfrequencypp_1_1frequency.html" class="m-doc">frequency</a>&lt;Rep, Period&gt;&amp; f) -&gt; std::enable_if_t&lt; detail::is_duration_v&lt; ToDuration &gt;, ToDuration &gt; <span class="m-label m-flat m-primary">constexpr</span></span>
+            </dt>
+            <dd>Convert a <a href="structfrequencypp_1_1frequency.html" class="m-doc">frequencypp::<wbr />frequency</a> to the equivalent duration type <code>ToDuration</code>.</dd>
             <dt>
               <div class="m-doc-template">template&lt;typename Rep1, typename Period1, typename Rep2, typename Period2&gt;</div>
               <span class="m-doc-wrap-bumper">auto <a href="#a1de9b3c72fca6d3e8d16d54563568297" class="m-doc">operator==</a>(</span><span class="m-doc-wrap">const <a href="structfrequencypp_1_1frequency.html" class="m-doc">frequency</a>&lt;Rep1, Period1&gt;&amp; lhs,
@@ -173,6 +183,80 @@
               const <a href="structfrequencypp_1_1frequency.html" class="m-doc">frequency</a>&lt;Rep2, Period2&gt;&amp; rhs) -&gt; bool <span class="m-label m-flat m-primary">constexpr</span></span>
             </dt>
             <dd>Determine whether the left-hand frequency <code>lhs</code> is more frequent than or as frequent as the right-hand frequency <code>rhs</code>.</dd>
+            <dt>
+              <div class="m-doc-template">template&lt;typename Rep1, typename Period1, typename Rep2, typename Period2&gt;</div>
+              <span class="m-doc-wrap-bumper">auto <a href="#a2d3ccef3488fe52632ced9fbb14eeddf" class="m-doc">operator+</a>(</span><span class="m-doc-wrap">const <a href="structfrequencypp_1_1frequency.html" class="m-doc">frequency</a>&lt;Rep1, Period1&gt;&amp; lhs,
+              const <a href="structfrequencypp_1_1frequency.html" class="m-doc">frequency</a>&lt;Rep2, Period2&gt;&amp; rhs) -&gt; std::common_type_t&lt; frequency&lt; Rep1, Period1 &gt;, frequency&lt; Rep2, Period2 &gt;&gt; <span class="m-label m-flat m-primary">constexpr</span></span>
+            </dt>
+            <dd>Add the tick count of frequency <code>rhs</code> to the tick count of frequency <code>lhs</code>.</dd>
+            <dt>
+              <div class="m-doc-template">template&lt;typename Rep1, typename Period1, typename Rep2, typename Period2&gt;</div>
+              <span class="m-doc-wrap-bumper">auto <a href="#ab8eac2a47297a904bd66b68abe8982a9" class="m-doc">operator-</a>(</span><span class="m-doc-wrap">const <a href="structfrequencypp_1_1frequency.html" class="m-doc">frequency</a>&lt;Rep1, Period1&gt;&amp; lhs,
+              const <a href="structfrequencypp_1_1frequency.html" class="m-doc">frequency</a>&lt;Rep2, Period2&gt;&amp; rhs) -&gt; std::common_type_t&lt; frequency&lt; Rep1, Period1 &gt;, frequency&lt; Rep2, Period2 &gt;&gt; <span class="m-label m-flat m-primary">constexpr</span></span>
+            </dt>
+            <dd>Subtract the tick count of frequency <code>rhs</code> from the tick count of frequency <code>lhs</code>.</dd>
+            <dt>
+              <div class="m-doc-template">template&lt;typename Rep1, typename Period, typename Rep2&gt;</div>
+              <span class="m-doc-wrap-bumper">auto <a href="#a9c86b9b135618e3a90c49f85fa0d3653" class="m-doc">operator*</a>(</span><span class="m-doc-wrap">const <a href="structfrequencypp_1_1frequency.html" class="m-doc">frequency</a>&lt;Rep1, Period&gt;&amp; lhs,
+              const Rep2&amp; rhs) -&gt; frequency&lt; std::common_type_t&lt; Rep1, Rep2 &gt;, Period &gt; <span class="m-label m-flat m-primary">constexpr</span></span>
+            </dt>
+            <dd>Multiply the tick count of frequency <code>lhs</code> by factor <code>rhs</code>.</dd>
+            <dt>
+              <div class="m-doc-template">template&lt;typename Rep1, typename Rep2, typename Period&gt;</div>
+              <span class="m-doc-wrap-bumper">auto <a href="#acdb1a60a3c591e2ddcdb3a226aa4c3be" class="m-doc">operator*</a>(</span><span class="m-doc-wrap">const Rep1&amp; lhs,
+              const <a href="structfrequencypp_1_1frequency.html" class="m-doc">frequency</a>&lt;Rep2, Period&gt;&amp; rhs) -&gt; frequency&lt; std::common_type_t&lt; Rep1, Rep2 &gt;, Period &gt; <span class="m-label m-flat m-primary">constexpr</span></span>
+            </dt>
+            <dd>Multiply the tick count of frequency <code>rhs</code> by factor <code>lhs</code>.</dd>
+            <dt>
+              <div class="m-doc-template">template&lt;typename Rep1, typename Period, typename Rep2&gt;</div>
+              <span class="m-doc-wrap-bumper">auto <a href="#a316547881a72cffe5d2195035a8ecc61" class="m-doc">operator/</a>(</span><span class="m-doc-wrap">const <a href="structfrequencypp_1_1frequency.html" class="m-doc">frequency</a>&lt;Rep1, Period&gt;&amp; lhs,
+              const Rep2&amp; rhs) -&gt; frequency&lt; std::common_type_t&lt; Rep1, Rep2 &gt;, Period &gt; <span class="m-label m-flat m-primary">constexpr</span></span>
+            </dt>
+            <dd>Divide the tick count of frequency <code>lhs</code> by factor <code>rhs</code>.</dd>
+            <dt>
+              <div class="m-doc-template">template&lt;typename Rep1, typename Period1, typename Rep2, typename Period2&gt;</div>
+              <span class="m-doc-wrap-bumper">auto <a href="#ae65bb128d393efb98d9ddea9ffee30b4" class="m-doc">operator/</a>(</span><span class="m-doc-wrap">const <a href="structfrequencypp_1_1frequency.html" class="m-doc">frequency</a>&lt;Rep1, Period1&gt;&amp; lhs,
+              const <a href="structfrequencypp_1_1frequency.html" class="m-doc">frequency</a>&lt;Rep2, Period2&gt;&amp; rhs) -&gt; std::common_type_t&lt; Rep1, Rep2 &gt; <span class="m-label m-flat m-primary">constexpr</span></span>
+            </dt>
+            <dd>Divide the tick count of frequency <code>rhs</code> by the tick count of frequency <code>lhs</code>.</dd>
+            <dt>
+              <div class="m-doc-template">template&lt;typename Rep1, typename Period, typename Rep2&gt;</div>
+              <span class="m-doc-wrap-bumper">auto <a href="#ad5d314749c725d76d4847896cccacab0" class="m-doc">operator%</a>(</span><span class="m-doc-wrap">const <a href="structfrequencypp_1_1frequency.html" class="m-doc">frequency</a>&lt;Rep1, Period&gt;&amp; lhs,
+              const Rep2&amp; rhs) -&gt; frequency&lt; std::common_type_t&lt; Rep1, Rep2 &gt;, Period &gt; <span class="m-label m-flat m-primary">constexpr</span></span>
+            </dt>
+            <dd>Reduce the tick count of frequency <code>lhs</code> by modulus <code>rhs</code>.</dd>
+            <dt>
+              <div class="m-doc-template">template&lt;typename Rep1, typename Period1, typename Rep2, typename Period2&gt;</div>
+              <span class="m-doc-wrap-bumper">auto <a href="#a31ded8269307895544d38be5fee927c7" class="m-doc">operator%</a>(</span><span class="m-doc-wrap">const <a href="structfrequencypp_1_1frequency.html" class="m-doc">frequency</a>&lt;Rep1, Period1&gt;&amp; lhs,
+              const <a href="structfrequencypp_1_1frequency.html" class="m-doc">frequency</a>&lt;Rep2, Period2&gt;&amp; rhs) -&gt; std::common_type_t&lt; Rep1, Rep2 &gt; <span class="m-label m-flat m-primary">constexpr</span></span>
+            </dt>
+            <dd>Modulo the tick count of frequency <code>rhs</code> by the tick count of frequency <code>lhs</code>.</dd>
+            <dt>
+              <div class="m-doc-template">template&lt;typename ToFrequency, typename Rep, typename Period&gt;</div>
+              <span class="m-doc-wrap-bumper">auto <a href="#a36ebbb5e5cd0c2f0735555edf7ccbea0" class="m-doc">floor</a>(</span><span class="m-doc-wrap">const <a href="structfrequencypp_1_1frequency.html" class="m-doc">frequency</a>&lt;Rep, Period&gt;&amp; f) -&gt; ToFrequency <span class="m-label m-flat m-primary">constexpr</span></span>
+            </dt>
+            <dd>Compute the floor of frequency <code>f</code>.</dd>
+            <dt>
+              <div class="m-doc-template">template&lt;typename ToFrequency, typename Rep, typename Period&gt;</div>
+              <span class="m-doc-wrap-bumper">auto <a href="#a5f7dd0647c2beeca6035a91f1896c711" class="m-doc">ceil</a>(</span><span class="m-doc-wrap">const <a href="structfrequencypp_1_1frequency.html" class="m-doc">frequency</a>&lt;Rep, Period&gt;&amp; f) -&gt; ToFrequency <span class="m-label m-flat m-primary">constexpr</span></span>
+            </dt>
+            <dd>Compute the ceiling of frequency <code>f</code>.</dd>
+            <dt>
+              <div class="m-doc-template">template&lt;typename ToFrequency, typename Rep, typename Period&gt;</div>
+              <span class="m-doc-wrap-bumper">auto <a href="#a31d7faf76e89d3f1dd6cc443ab95490a" class="m-doc">round</a>(</span><span class="m-doc-wrap">const <a href="structfrequencypp_1_1frequency.html" class="m-doc">frequency</a>&lt;Rep, Period&gt;&amp; f) -&gt; std::enable_if_t&lt; detail::is_frequency_v&lt; ToFrequency &gt; &amp;&amp;!std::chrono::treat_as_floating_point_v&lt; typename ToFrequency::rep &gt;, ToFrequency &gt; <span class="m-label m-flat m-primary">constexpr</span></span>
+            </dt>
+            <dd>Round frequency <code>f</code> to its closest representation in <code>ToFrequency</code>.</dd>
+            <dt>
+              <div class="m-doc-template">template&lt;typename Rep, typename Period&gt;</div>
+              <span class="m-doc-wrap-bumper">auto <a href="#a90706a038bd46a4afe3abf8e9785db02" class="m-doc">abs</a>(</span><span class="m-doc-wrap"><a href="structfrequencypp_1_1frequency.html" class="m-doc">frequency</a>&lt;Rep, Period&gt; f) -&gt; std::enable_if_t&lt; std::numeric_limits&lt; Rep &gt;::is_signed, frequency&lt; Rep, Period &gt;&gt; <span class="m-label m-flat m-primary">constexpr</span></span>
+            </dt>
+            <dd>Compute the absolute value of frequency <code>f</code>.</dd>
+            <dt>
+              <div class="m-doc-template">template&lt;typename CharT, typename Traits, typename Rep, typename Period&gt;</div>
+              <span class="m-doc-wrap-bumper">auto <a href="#a935d55626ceb89cd97a9e141e84c5403" class="m-doc">operator&lt;&lt;</a>(</span><span class="m-doc-wrap">std::basic_ostream&lt;CharT, Traits&gt;&amp; os,
+              const <a href="structfrequencypp_1_1frequency.html" class="m-doc">frequency</a>&lt;Rep, Period&gt;&amp; f) -&gt; std::basic_ostream&lt; CharT, Traits &gt; &amp;</span>
+            </dt>
+            <dd>Inserts a textual representation of <code>f</code> into <code>os</code>.</dd>
             <dt>
               <span class="m-doc-wrap-bumper">auto <a href="namespacefrequencypp_1_1literals.html#a20fa0dbfb5ff6b0e407597a5a0318126" class="m-doc">operator&quot;&quot;_nHz</a>(</span><span class="m-doc-wrap">unsigned long long r) -&gt; nanohertz <span class="m-label m-flat m-primary">constexpr</span></span>
             </dt>
@@ -323,7 +407,7 @@
               </div>
               <span class="m-doc-wrap-bumper">auto frequencypp::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a4341fc74ff5eee8a40da53a794584a65" class="m-doc-self">frequency_cast</a>(</span><span class="m-doc-wrap">const <a href="structfrequencypp_1_1frequency.html" class="m-doc">frequency</a>&lt;Rep, Period&gt;&amp; f) -&gt; std::enable_if_t&lt; detail::is_frequency_v&lt; ToFrequency &gt;, ToFrequency &gt; <span class="m-label m-primary">constexpr</span></span></span>
             </h3>
-            <p>Convert a <a href="structfrequencypp_1_1frequency.html#a3b3fd96425613b464bd49688809a083d" class="m-doc">frequency::<wbr />frequency</a> to a frequency of different type <code>ToFrequency</code>.</p>
+            <p>Convert a <a href="structfrequencypp_1_1frequency.html" class="m-doc">frequencypp::<wbr />frequency</a> to a frequency of different type <code>ToFrequency</code>.</p>
             <table class="m-table m-fullwidth m-flat">
               <thead>
                 <tr><th colspan="2">Template parameters</th></tr>
@@ -331,7 +415,7 @@
               <tbody>
                 <tr>
                   <td style="width: 1%">ToFrequency</td>
-                  <td><a href="structfrequencypp_1_1frequency.html#a3b3fd96425613b464bd49688809a083d" class="m-doc">frequency::<wbr />frequency</a> type to convert to</td>
+                  <td><a href="structfrequencypp_1_1frequency.html" class="m-doc">frequencypp::<wbr />frequency</a> type to convert to</td>
                 </tr>
                 <tr>
                   <td>Rep</td>
@@ -355,6 +439,96 @@
                 <tr>
                   <th>Returns</th>
                   <td><code>f</code> converted to a frequency of type <code>ToFrequency</code></td>
+                </tr>
+              </tfoot>
+            </table>
+<p>No implicit conversions are used. Computations are done in the widest type available and converted, as if by <code>static_cast</code>, to the result type only when finished.</p>
+          </div></section>
+          <section class="m-doc-details" id="a76dae81ea6eb6c7fafa69ec5b13d0b05"><div>
+            <h3>
+              <div class="m-doc-include m-code m-inverted m-right-m m-text-right"><span class="cp">#include</span> <a class="cpf" href="frequency_8hpp.html">&lt;frequencypp/frequency.hpp&gt;</a></div>
+              <div class="m-doc-template">
+                template&lt;typename ToFrequency, typename Rep, typename Period&gt;
+              </div>
+              <span class="m-doc-wrap-bumper">auto frequencypp::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a76dae81ea6eb6c7fafa69ec5b13d0b05" class="m-doc-self">frequency_cast</a>(</span><span class="m-doc-wrap">const std::chrono::duration&lt;Rep, Period&gt;&amp; d) -&gt; std::enable_if_t&lt; detail::is_frequency_v&lt; ToFrequency &gt;, ToFrequency &gt; <span class="m-label m-primary">constexpr</span></span></span>
+            </h3>
+            <p>Convert a <code>std::chrono::duration</code> to the equivalent frequency type <code>ToFrequency</code>.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Template parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">ToFrequency</td>
+                  <td><a href="structfrequencypp_1_1frequency.html" class="m-doc">frequencypp::<wbr />frequency</a> type to convert to</td>
+                </tr>
+                <tr>
+                  <td>Rep</td>
+                  <td>arithmetic type representing the number of ticks for <code>d</code></td>
+                </tr>
+                <tr>
+                  <td>Period</td>
+                  <td>ratio representing the tick period for <code>d</code></td>
+                </tr>
+              </tbody>
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>d</td>
+                  <td>duration to convert</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td><code>d</code> converted to a frequency of type <code>ToFrequency</code></td>
+                </tr>
+              </tfoot>
+            </table>
+<p>No implicit conversions are used. Computations are done in the widest type available and converted, as if by <code>static_cast</code>, to the result type only when finished.</p>
+          </div></section>
+          <section class="m-doc-details" id="a29e1aa026253e73108fc9ab7a6479ec1"><div>
+            <h3>
+              <div class="m-doc-include m-code m-inverted m-right-m m-text-right"><span class="cp">#include</span> <a class="cpf" href="frequency_8hpp.html">&lt;frequencypp/frequency.hpp&gt;</a></div>
+              <div class="m-doc-template">
+                template&lt;typename ToDuration, typename Rep, typename Period&gt;
+              </div>
+              <span class="m-doc-wrap-bumper">auto frequencypp::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a29e1aa026253e73108fc9ab7a6479ec1" class="m-doc-self">duration_cast</a>(</span><span class="m-doc-wrap">const <a href="structfrequencypp_1_1frequency.html" class="m-doc">frequency</a>&lt;Rep, Period&gt;&amp; f) -&gt; std::enable_if_t&lt; detail::is_duration_v&lt; ToDuration &gt;, ToDuration &gt; <span class="m-label m-primary">constexpr</span></span></span>
+            </h3>
+            <p>Convert a <a href="structfrequencypp_1_1frequency.html" class="m-doc">frequencypp::<wbr />frequency</a> to the equivalent duration type <code>ToDuration</code>.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Template parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">ToDuration</td>
+                  <td><code>std::chrono::duration</code> type to convert to</td>
+                </tr>
+                <tr>
+                  <td>Rep</td>
+                  <td>arithmetic type representing the number of ticks for <code>f</code></td>
+                </tr>
+                <tr>
+                  <td>Period</td>
+                  <td>ratio representing the tick period for <code>f</code></td>
+                </tr>
+              </tbody>
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>f</td>
+                  <td>frequency to convert</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td><code>f</code> converted to a duration of type <code>ToDuration</code></td>
                 </tr>
               </tfoot>
             </table>
@@ -725,6 +899,648 @@
               </tbody>
             </table>
 <p>The comparison is made using the common type of <code>lhs</code> and <code>rhs</code>.</p>
+          </div></section>
+          <section class="m-doc-details" id="a2d3ccef3488fe52632ced9fbb14eeddf"><div>
+            <h3>
+              <div class="m-doc-include m-code m-inverted m-right-m m-text-right"><span class="cp">#include</span> <a class="cpf" href="frequency_8hpp.html">&lt;frequencypp/frequency.hpp&gt;</a></div>
+              <div class="m-doc-template">
+                template&lt;typename Rep1, typename Period1, typename Rep2, typename Period2&gt;
+              </div>
+              <span class="m-doc-wrap-bumper">auto frequencypp::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a2d3ccef3488fe52632ced9fbb14eeddf" class="m-doc-self">operator+</a>(</span><span class="m-doc-wrap">const <a href="structfrequencypp_1_1frequency.html" class="m-doc">frequency</a>&lt;Rep1, Period1&gt;&amp; lhs,
+              const <a href="structfrequencypp_1_1frequency.html" class="m-doc">frequency</a>&lt;Rep2, Period2&gt;&amp; rhs) -&gt; std::common_type_t&lt; frequency&lt; Rep1, Period1 &gt;, frequency&lt; Rep2, Period2 &gt;&gt; <span class="m-label m-primary">constexpr</span></span></span>
+            </h3>
+            <p>Add the tick count of frequency <code>rhs</code> to the tick count of frequency <code>lhs</code>.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Template parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">Rep1</td>
+                  <td>arithmetic type representing the number of ticks for <code>lhs</code></td>
+                </tr>
+                <tr>
+                  <td>Period1</td>
+                  <td>ratio representing the tick period for <code>lhs</code></td>
+                </tr>
+                <tr>
+                  <td>Rep2</td>
+                  <td>arithmetic type representing the number of ticks for <code>rhs</code></td>
+                </tr>
+                <tr>
+                  <td>Period2</td>
+                  <td>ratio representing the tick period for <code>rhs</code></td>
+                </tr>
+              </tbody>
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>lhs</td>
+                  <td>left-hand frequency to add</td>
+                </tr>
+                <tr>
+                  <td>rhs</td>
+                  <td>right-hand frequency to add</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>frequency with the sum of the tick counts of <code>lhs</code> and <code>rhs</code></td>
+                </tr>
+              </tfoot>
+            </table>
+<p>The calculation is done using the common type of <code>lhs</code> and <code>rhs</code>.</p>
+          </div></section>
+          <section class="m-doc-details" id="ab8eac2a47297a904bd66b68abe8982a9"><div>
+            <h3>
+              <div class="m-doc-include m-code m-inverted m-right-m m-text-right"><span class="cp">#include</span> <a class="cpf" href="frequency_8hpp.html">&lt;frequencypp/frequency.hpp&gt;</a></div>
+              <div class="m-doc-template">
+                template&lt;typename Rep1, typename Period1, typename Rep2, typename Period2&gt;
+              </div>
+              <span class="m-doc-wrap-bumper">auto frequencypp::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ab8eac2a47297a904bd66b68abe8982a9" class="m-doc-self">operator-</a>(</span><span class="m-doc-wrap">const <a href="structfrequencypp_1_1frequency.html" class="m-doc">frequency</a>&lt;Rep1, Period1&gt;&amp; lhs,
+              const <a href="structfrequencypp_1_1frequency.html" class="m-doc">frequency</a>&lt;Rep2, Period2&gt;&amp; rhs) -&gt; std::common_type_t&lt; frequency&lt; Rep1, Period1 &gt;, frequency&lt; Rep2, Period2 &gt;&gt; <span class="m-label m-primary">constexpr</span></span></span>
+            </h3>
+            <p>Subtract the tick count of frequency <code>rhs</code> from the tick count of frequency <code>lhs</code>.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Template parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">Rep1</td>
+                  <td>arithmetic type representing the number of ticks for <code>lhs</code></td>
+                </tr>
+                <tr>
+                  <td>Period1</td>
+                  <td>ratio representing the tick period for <code>lhs</code></td>
+                </tr>
+                <tr>
+                  <td>Rep2</td>
+                  <td>arithmetic type representing the number of ticks for <code>rhs</code></td>
+                </tr>
+                <tr>
+                  <td>Period2</td>
+                  <td>ratio representing the tick period for <code>rhs</code></td>
+                </tr>
+              </tbody>
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>lhs</td>
+                  <td>left-hand frequency to subtract</td>
+                </tr>
+                <tr>
+                  <td>rhs</td>
+                  <td>right-hand frequency to subtract</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>frequency with the difference of the tick counts of <code>lhs</code> and <code>rhs</code></td>
+                </tr>
+              </tfoot>
+            </table>
+<p>The calculation is done using the common type of <code>lhs</code> and <code>rhs</code>.</p>
+          </div></section>
+          <section class="m-doc-details" id="a9c86b9b135618e3a90c49f85fa0d3653"><div>
+            <h3>
+              <div class="m-doc-include m-code m-inverted m-right-m m-text-right"><span class="cp">#include</span> <a class="cpf" href="frequency_8hpp.html">&lt;frequencypp/frequency.hpp&gt;</a></div>
+              <div class="m-doc-template">
+                template&lt;typename Rep1, typename Period, typename Rep2&gt;
+              </div>
+              <span class="m-doc-wrap-bumper">auto frequencypp::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a9c86b9b135618e3a90c49f85fa0d3653" class="m-doc-self">operator*</a>(</span><span class="m-doc-wrap">const <a href="structfrequencypp_1_1frequency.html" class="m-doc">frequency</a>&lt;Rep1, Period&gt;&amp; lhs,
+              const Rep2&amp; rhs) -&gt; frequency&lt; std::common_type_t&lt; Rep1, Rep2 &gt;, Period &gt; <span class="m-label m-primary">constexpr</span></span></span>
+            </h3>
+            <p>Multiply the tick count of frequency <code>lhs</code> by factor <code>rhs</code>.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Template parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">Rep1</td>
+                  <td>arithmetic type representing the number of ticks for <code>lhs</code></td>
+                </tr>
+                <tr>
+                  <td>Period</td>
+                  <td>ratio representing the tick period for <code>lhs</code></td>
+                </tr>
+                <tr>
+                  <td>Rep2</td>
+                  <td>arithmetic type representing the number of ticks for <code>rhs</code></td>
+                </tr>
+              </tbody>
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>lhs</td>
+                  <td>left-hand frequency to multiply</td>
+                </tr>
+                <tr>
+                  <td>rhs</td>
+                  <td>right-hand factor to multiply by</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>frequency with the product of the tick count of <code>lhs</code> and <code>rhs</code></td>
+                </tr>
+              </tfoot>
+            </table>
+<p>The calculation is done using the common type of <code>lhs</code> and <code>rhs</code>.</p>
+          </div></section>
+          <section class="m-doc-details" id="acdb1a60a3c591e2ddcdb3a226aa4c3be"><div>
+            <h3>
+              <div class="m-doc-include m-code m-inverted m-right-m m-text-right"><span class="cp">#include</span> <a class="cpf" href="frequency_8hpp.html">&lt;frequencypp/frequency.hpp&gt;</a></div>
+              <div class="m-doc-template">
+                template&lt;typename Rep1, typename Rep2, typename Period&gt;
+              </div>
+              <span class="m-doc-wrap-bumper">auto frequencypp::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#acdb1a60a3c591e2ddcdb3a226aa4c3be" class="m-doc-self">operator*</a>(</span><span class="m-doc-wrap">const Rep1&amp; lhs,
+              const <a href="structfrequencypp_1_1frequency.html" class="m-doc">frequency</a>&lt;Rep2, Period&gt;&amp; rhs) -&gt; frequency&lt; std::common_type_t&lt; Rep1, Rep2 &gt;, Period &gt; <span class="m-label m-primary">constexpr</span></span></span>
+            </h3>
+            <p>Multiply the tick count of frequency <code>rhs</code> by factor <code>lhs</code>.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Template parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">Rep1</td>
+                  <td>arithmetic type representing the number of ticks for <code>lhs</code></td>
+                </tr>
+                <tr>
+                  <td>Rep2</td>
+                  <td>arithmetic type representing the number of ticks for <code>rhs</code></td>
+                </tr>
+                <tr>
+                  <td>Period</td>
+                  <td>ratio representing the tick period for <code>rhs</code></td>
+                </tr>
+              </tbody>
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>lhs</td>
+                  <td>left-hand factor to multiply by</td>
+                </tr>
+                <tr>
+                  <td>rhs</td>
+                  <td>right-hand frequency to multiply</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>frequency with the product of <code>lhs</code> and the tick count of <code>rhs</code></td>
+                </tr>
+              </tfoot>
+            </table>
+<p>The calculation is done using the common type of <code>lhs</code> and <code>rhs</code>.</p>
+          </div></section>
+          <section class="m-doc-details" id="a316547881a72cffe5d2195035a8ecc61"><div>
+            <h3>
+              <div class="m-doc-include m-code m-inverted m-right-m m-text-right"><span class="cp">#include</span> <a class="cpf" href="frequency_8hpp.html">&lt;frequencypp/frequency.hpp&gt;</a></div>
+              <div class="m-doc-template">
+                template&lt;typename Rep1, typename Period, typename Rep2&gt;
+              </div>
+              <span class="m-doc-wrap-bumper">auto frequencypp::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a316547881a72cffe5d2195035a8ecc61" class="m-doc-self">operator/</a>(</span><span class="m-doc-wrap">const <a href="structfrequencypp_1_1frequency.html" class="m-doc">frequency</a>&lt;Rep1, Period&gt;&amp; lhs,
+              const Rep2&amp; rhs) -&gt; frequency&lt; std::common_type_t&lt; Rep1, Rep2 &gt;, Period &gt; <span class="m-label m-primary">constexpr</span></span></span>
+            </h3>
+            <p>Divide the tick count of frequency <code>lhs</code> by factor <code>rhs</code>.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Template parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">Rep1</td>
+                  <td>arithmetic type representing the number of ticks for <code>lhs</code></td>
+                </tr>
+                <tr>
+                  <td>Period</td>
+                  <td>ratio representing the tick period for <code>lhs</code></td>
+                </tr>
+                <tr>
+                  <td>Rep2</td>
+                  <td>arithmetic type representing the number of ticks for <code>rhs</code></td>
+                </tr>
+              </tbody>
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>lhs</td>
+                  <td>left-hand frequency to divide</td>
+                </tr>
+                <tr>
+                  <td>rhs</td>
+                  <td>right-hand factor to divide by</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>frequency with the quotient of the tick count of <code>lhs</code> and <code>rhs</code></td>
+                </tr>
+              </tfoot>
+            </table>
+<p>The calculation is done using the common type of <code>lhs</code> and <code>rhs</code>.</p>
+          </div></section>
+          <section class="m-doc-details" id="ae65bb128d393efb98d9ddea9ffee30b4"><div>
+            <h3>
+              <div class="m-doc-include m-code m-inverted m-right-m m-text-right"><span class="cp">#include</span> <a class="cpf" href="frequency_8hpp.html">&lt;frequencypp/frequency.hpp&gt;</a></div>
+              <div class="m-doc-template">
+                template&lt;typename Rep1, typename Period1, typename Rep2, typename Period2&gt;
+              </div>
+              <span class="m-doc-wrap-bumper">auto frequencypp::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ae65bb128d393efb98d9ddea9ffee30b4" class="m-doc-self">operator/</a>(</span><span class="m-doc-wrap">const <a href="structfrequencypp_1_1frequency.html" class="m-doc">frequency</a>&lt;Rep1, Period1&gt;&amp; lhs,
+              const <a href="structfrequencypp_1_1frequency.html" class="m-doc">frequency</a>&lt;Rep2, Period2&gt;&amp; rhs) -&gt; std::common_type_t&lt; Rep1, Rep2 &gt; <span class="m-label m-primary">constexpr</span></span></span>
+            </h3>
+            <p>Divide the tick count of frequency <code>rhs</code> by the tick count of frequency <code>lhs</code>.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Template parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">Rep1</td>
+                  <td>arithmetic type representing the number of ticks for <code>lhs</code></td>
+                </tr>
+                <tr>
+                  <td>Period1</td>
+                  <td>ratio representing the tick period for <code>lhs</code></td>
+                </tr>
+                <tr>
+                  <td>Rep2</td>
+                  <td>arithmetic type representing the number of ticks for <code>rhs</code></td>
+                </tr>
+                <tr>
+                  <td>Period2</td>
+                  <td>ratio representing the tick period for <code>rhs</code></td>
+                </tr>
+              </tbody>
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>lhs</td>
+                  <td>left-hand frequency to divide</td>
+                </tr>
+                <tr>
+                  <td>rhs</td>
+                  <td>right-hand frequency to divide by</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>quotient of the tick counts of <code>lhs</code> and <code>rhs</code></td>
+                </tr>
+              </tfoot>
+            </table>
+<p>The calculation is done using the common type of <code>lhs</code> and <code>rhs</code>.</p>
+          </div></section>
+          <section class="m-doc-details" id="ad5d314749c725d76d4847896cccacab0"><div>
+            <h3>
+              <div class="m-doc-include m-code m-inverted m-right-m m-text-right"><span class="cp">#include</span> <a class="cpf" href="frequency_8hpp.html">&lt;frequencypp/frequency.hpp&gt;</a></div>
+              <div class="m-doc-template">
+                template&lt;typename Rep1, typename Period, typename Rep2&gt;
+              </div>
+              <span class="m-doc-wrap-bumper">auto frequencypp::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ad5d314749c725d76d4847896cccacab0" class="m-doc-self">operator%</a>(</span><span class="m-doc-wrap">const <a href="structfrequencypp_1_1frequency.html" class="m-doc">frequency</a>&lt;Rep1, Period&gt;&amp; lhs,
+              const Rep2&amp; rhs) -&gt; frequency&lt; std::common_type_t&lt; Rep1, Rep2 &gt;, Period &gt; <span class="m-label m-primary">constexpr</span></span></span>
+            </h3>
+            <p>Reduce the tick count of frequency <code>lhs</code> by modulus <code>rhs</code>.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Template parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">Rep1</td>
+                  <td>arithmetic type representing the number of ticks for <code>lhs</code></td>
+                </tr>
+                <tr>
+                  <td>Period</td>
+                  <td>ratio representing the tick period for <code>lhs</code></td>
+                </tr>
+                <tr>
+                  <td>Rep2</td>
+                  <td>arithmetic type representing the number of ticks for <code>rhs</code></td>
+                </tr>
+              </tbody>
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>lhs</td>
+                  <td>left-hand frequency to reduce</td>
+                </tr>
+                <tr>
+                  <td>rhs</td>
+                  <td>right-hand modulus to reduce by</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>frequency with the remainder of the tick count of <code>lhs</code> and <code>rhs</code></td>
+                </tr>
+              </tfoot>
+            </table>
+<p>The calculation is done using the common type of <code>lhs</code> and <code>rhs</code>.</p>
+          </div></section>
+          <section class="m-doc-details" id="a31ded8269307895544d38be5fee927c7"><div>
+            <h3>
+              <div class="m-doc-include m-code m-inverted m-right-m m-text-right"><span class="cp">#include</span> <a class="cpf" href="frequency_8hpp.html">&lt;frequencypp/frequency.hpp&gt;</a></div>
+              <div class="m-doc-template">
+                template&lt;typename Rep1, typename Period1, typename Rep2, typename Period2&gt;
+              </div>
+              <span class="m-doc-wrap-bumper">auto frequencypp::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a31ded8269307895544d38be5fee927c7" class="m-doc-self">operator%</a>(</span><span class="m-doc-wrap">const <a href="structfrequencypp_1_1frequency.html" class="m-doc">frequency</a>&lt;Rep1, Period1&gt;&amp; lhs,
+              const <a href="structfrequencypp_1_1frequency.html" class="m-doc">frequency</a>&lt;Rep2, Period2&gt;&amp; rhs) -&gt; std::common_type_t&lt; Rep1, Rep2 &gt; <span class="m-label m-primary">constexpr</span></span></span>
+            </h3>
+            <p>Modulo the tick count of frequency <code>rhs</code> by the tick count of frequency <code>lhs</code>.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Template parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">Rep1</td>
+                  <td>arithmetic type representing the number of ticks for <code>lhs</code></td>
+                </tr>
+                <tr>
+                  <td>Period1</td>
+                  <td>ratio representing the tick period for <code>lhs</code></td>
+                </tr>
+                <tr>
+                  <td>Rep2</td>
+                  <td>arithmetic type representing the number of ticks for <code>rhs</code></td>
+                </tr>
+                <tr>
+                  <td>Period2</td>
+                  <td>ratio representing the tick period for <code>rhs</code></td>
+                </tr>
+              </tbody>
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>lhs</td>
+                  <td>left-hand frequency to reduce</td>
+                </tr>
+                <tr>
+                  <td>rhs</td>
+                  <td>right-hand frequency to reduce by</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>remainder of the tick counts of <code>lhs</code> and <code>rhs</code></td>
+                </tr>
+              </tfoot>
+            </table>
+<p>The calculation is done using the common type of <code>lhs</code> and <code>rhs</code>.</p>
+          </div></section>
+          <section class="m-doc-details" id="a36ebbb5e5cd0c2f0735555edf7ccbea0"><div>
+            <h3>
+              <div class="m-doc-include m-code m-inverted m-right-m m-text-right"><span class="cp">#include</span> <a class="cpf" href="frequency_8hpp.html">&lt;frequencypp/frequency.hpp&gt;</a></div>
+              <div class="m-doc-template">
+                template&lt;typename ToFrequency, typename Rep, typename Period&gt;
+              </div>
+              <span class="m-doc-wrap-bumper">auto frequencypp::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a36ebbb5e5cd0c2f0735555edf7ccbea0" class="m-doc-self">floor</a>(</span><span class="m-doc-wrap">const <a href="structfrequencypp_1_1frequency.html" class="m-doc">frequency</a>&lt;Rep, Period&gt;&amp; f) -&gt; ToFrequency <span class="m-label m-primary">constexpr</span></span></span>
+            </h3>
+            <p>Compute the floor of frequency <code>f</code>.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Template parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">ToFrequency</td>
+                  <td><a href="structfrequencypp_1_1frequency.html" class="m-doc">frequencypp::<wbr />frequency</a> type to convert to</td>
+                </tr>
+                <tr>
+                  <td>Rep</td>
+                  <td>arithmetic type representing the number of ticks for <code>f</code></td>
+                </tr>
+                <tr>
+                  <td>Period</td>
+                  <td>ratio representing the tick period for <code>f</code></td>
+                </tr>
+              </tbody>
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>f</td>
+                  <td>frequency to convert</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>greatest duration representable in <code>ToFrequency</code> that is less than or equal to <code>f</code></td>
+                </tr>
+              </tfoot>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="a5f7dd0647c2beeca6035a91f1896c711"><div>
+            <h3>
+              <div class="m-doc-include m-code m-inverted m-right-m m-text-right"><span class="cp">#include</span> <a class="cpf" href="frequency_8hpp.html">&lt;frequencypp/frequency.hpp&gt;</a></div>
+              <div class="m-doc-template">
+                template&lt;typename ToFrequency, typename Rep, typename Period&gt;
+              </div>
+              <span class="m-doc-wrap-bumper">auto frequencypp::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a5f7dd0647c2beeca6035a91f1896c711" class="m-doc-self">ceil</a>(</span><span class="m-doc-wrap">const <a href="structfrequencypp_1_1frequency.html" class="m-doc">frequency</a>&lt;Rep, Period&gt;&amp; f) -&gt; ToFrequency <span class="m-label m-primary">constexpr</span></span></span>
+            </h3>
+            <p>Compute the ceiling of frequency <code>f</code>.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Template parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">ToFrequency</td>
+                  <td><a href="structfrequencypp_1_1frequency.html" class="m-doc">frequencypp::<wbr />frequency</a> type to convert to</td>
+                </tr>
+                <tr>
+                  <td>Rep</td>
+                  <td>arithmetic type representing the number of ticks for <code>f</code></td>
+                </tr>
+                <tr>
+                  <td>Period</td>
+                  <td>ratio representing the tick period for <code>f</code></td>
+                </tr>
+              </tbody>
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>f</td>
+                  <td>frequency to convert</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>smallest duration representable in <code>ToFrequency</code> that is greater than or equal to <code>f</code></td>
+                </tr>
+              </tfoot>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="a31d7faf76e89d3f1dd6cc443ab95490a"><div>
+            <h3>
+              <div class="m-doc-include m-code m-inverted m-right-m m-text-right"><span class="cp">#include</span> <a class="cpf" href="frequency_8hpp.html">&lt;frequencypp/frequency.hpp&gt;</a></div>
+              <div class="m-doc-template">
+                template&lt;typename ToFrequency, typename Rep, typename Period&gt;
+              </div>
+              <span class="m-doc-wrap-bumper">auto frequencypp::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a31d7faf76e89d3f1dd6cc443ab95490a" class="m-doc-self">round</a>(</span><span class="m-doc-wrap">const <a href="structfrequencypp_1_1frequency.html" class="m-doc">frequency</a>&lt;Rep, Period&gt;&amp; f) -&gt; std::enable_if_t&lt; detail::is_frequency_v&lt; ToFrequency &gt; &amp;&amp;!std::chrono::treat_as_floating_point_v&lt; typename ToFrequency::rep &gt;, ToFrequency &gt; <span class="m-label m-primary">constexpr</span></span></span>
+            </h3>
+            <p>Round frequency <code>f</code> to its closest representation in <code>ToFrequency</code>.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Template parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">ToFrequency</td>
+                  <td><a href="structfrequencypp_1_1frequency.html" class="m-doc">frequencypp::<wbr />frequency</a> type to convert to</td>
+                </tr>
+                <tr>
+                  <td>Rep</td>
+                  <td>arithmetic type representing the number of ticks for <code>f</code></td>
+                </tr>
+                <tr>
+                  <td>Period</td>
+                  <td>ratio representing the tick period for <code>f</code></td>
+                </tr>
+              </tbody>
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>f</td>
+                  <td>frequency to convert</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>value representable in <code>ToFrequency</code> that is closest to <code>f</code>, rounded to even in halfway cases</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="a90706a038bd46a4afe3abf8e9785db02"><div>
+            <h3>
+              <div class="m-doc-include m-code m-inverted m-right-m m-text-right"><span class="cp">#include</span> <a class="cpf" href="frequency_8hpp.html">&lt;frequencypp/frequency.hpp&gt;</a></div>
+              <div class="m-doc-template">
+                template&lt;typename Rep, typename Period&gt;
+              </div>
+              <span class="m-doc-wrap-bumper">auto frequencypp::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a90706a038bd46a4afe3abf8e9785db02" class="m-doc-self">abs</a>(</span><span class="m-doc-wrap"><a href="structfrequencypp_1_1frequency.html" class="m-doc">frequency</a>&lt;Rep, Period&gt; f) -&gt; std::enable_if_t&lt; std::numeric_limits&lt; Rep &gt;::is_signed, frequency&lt; Rep, Period &gt;&gt; <span class="m-label m-primary">constexpr</span></span></span>
+            </h3>
+            <p>Compute the absolute value of frequency <code>f</code>.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Template parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">Rep</td>
+                  <td>arithmetic type representing the number of ticks for <code>f</code></td>
+                </tr>
+                <tr>
+                  <td>Period</td>
+                  <td>ratio representing the tick period for <code>f</code></td>
+                </tr>
+              </tbody>
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>f</td>
+                  <td>frequency to convert</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>absolute value of <code>f</code></td>
+                </tr>
+              </tfoot>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="a935d55626ceb89cd97a9e141e84c5403"><div>
+            <h3>
+              <div class="m-doc-include m-code m-inverted m-right-m m-text-right"><span class="cp">#include</span> <a class="cpf" href="frequency_8hpp.html">&lt;frequencypp/frequency.hpp&gt;</a></div>
+              <div class="m-doc-template">
+                template&lt;typename CharT, typename Traits, typename Rep, typename Period&gt;
+              </div>
+              <span class="m-doc-wrap-bumper">auto frequencypp::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a935d55626ceb89cd97a9e141e84c5403" class="m-doc-self">operator&lt;&lt;</a>(</span><span class="m-doc-wrap">std::basic_ostream&lt;CharT, Traits&gt;&amp; os,
+              const <a href="structfrequencypp_1_1frequency.html" class="m-doc">frequency</a>&lt;Rep, Period&gt;&amp; f) -&gt; std::basic_ostream&lt; CharT, Traits &gt; &amp;</span></span>
+            </h3>
+            <p>Inserts a textual representation of <code>f</code> into <code>os</code>.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Template parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">CharT</td>
+                  <td>character type of the stream</td>
+                </tr>
+                <tr>
+                  <td>Traits</td>
+                  <td>character traits for the stream</td>
+                </tr>
+                <tr>
+                  <td>Rep</td>
+                  <td>arithmetic type representing the number of ticks</td>
+                </tr>
+                <tr>
+                  <td>Period</td>
+                  <td>ratio representing the tick period</td>
+                </tr>
+              </tbody>
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>os</td>
+                  <td>stream to insert into</td>
+                </tr>
+                <tr>
+                  <td>f</td>
+                  <td>frequency to insert</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>reference to <code>os</code></td>
+                </tr>
+              </tfoot>
+            </table>
+<p>The frequency is inserted into <code>os</code> as a string after being formatted out-of-line in a stream that matches the flags, locale, and precision of <code>os</code>.</p>
           </div></section>
         </section>
       </div>
