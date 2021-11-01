@@ -208,11 +208,11 @@ TEST_CASE("addition computes the correct tick count", "[arithmetic]")
 
     // Same representation, different period
     REQUIRE(15_Hz + 5_KHz == 5015_Hz);
-    REQUIRE(15.5_MHz + 4.5_GHz == 4.5155_GHz);
+    REQUIRE(15.5_MHz + 4.5_GHz == 4515.5_MHz);
 
     // Different representation and period
-    REQUIRE(15_Hz + 5.0_KHz == 5.015_KHz);
-    REQUIRE(15.5_MHz + 4_GHz == 4.0155_GHz);
+    REQUIRE(15_Hz + 5.0_KHz == 5015.0_Hz);
+    REQUIRE(15.5_MHz + 4_GHz == 4015.5_MHz);
 }
 
 TEST_CASE("addition does not modify arguments", "[arithmetic]")
@@ -280,11 +280,11 @@ TEST_CASE("subtraction computes the correct tick count", "[arithmetic]")
 
     // Same representation, different period
     REQUIRE(15_Hz - 5_KHz == -4985_Hz);
-    REQUIRE(15.5_MHz - 4.5_GHz == -4.4845_GHz);
+    REQUIRE(15.5_MHz - 4.5_GHz == -4484.5_MHz);
 
     // Different representation and period
-    REQUIRE(15_Hz - 5.0_KHz == -4.985_KHz);
-    REQUIRE(15.5_MHz - 4_GHz == -3.9845_GHz);
+    REQUIRE(15_Hz - 5.0_KHz == -4985.0_Hz);
+    REQUIRE(15.5_MHz - 4_GHz == -3984.5_MHz);
 }
 
 TEST_CASE("subtraction does not modify arguments", "[arithmetic]")
