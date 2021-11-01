@@ -36,3 +36,25 @@ TEST_CASE("frequency_cast casts count", "[cast]")
     REQUIRE(frequency_cast<frequency<float, std::milli>>(1_Hz).count() == 1000.0F);
     REQUIRE(frequency_cast<frequency<float, std::kilo>>(125_Hz).count() == 0.125F);
 }
+
+TEST_CASE("duration_cast casts count", "[cast]")
+{
+    using namespace ::frequencypp;
+    using namespace std::chrono;
+
+    // Same representation
+    REQUIRE(duration_cast<milliseconds>(1_Hz) == 1000ms);
+    REQUIRE(duration_cast<milliseconds>(60_Hz) == 16ms);
+    REQUIRE(duration_cast<microseconds>(20_KHz) == 50us);
+    REQUIRE(duration_cast<duration<long double, std::milli>>(1.0_Hz).count() == Approx(1000.0));
+    REQUIRE(duration_cast<duration<long double, std::milli>>(60.0_Hz).count() == Approx(16.6667));
+    REQUIRE(duration_cast<duration<long double, std::micro>>(20.0_KHz).count() == Approx(50.0));
+
+    // Different representation
+    REQUIRE(duration_cast<milliseconds>(1.0_Hz) == 1000ms);
+    REQUIRE(duration_cast<milliseconds>(60.0_Hz) == 16ms);
+    REQUIRE(duration_cast<microseconds>(20.0_KHz) == 50us);
+    REQUIRE(duration_cast<duration<long double, std::milli>>(1_Hz).count() == Approx(1000.0));
+    REQUIRE(duration_cast<duration<long double, std::milli>>(60_Hz).count() == Approx(16.6667));
+    REQUIRE(duration_cast<duration<long double, std::micro>>(20_KHz).count() == Approx(50.0));
+}

@@ -54,6 +54,17 @@ template<typename T>
 constexpr bool is_frequency_v = is_frequency<T>::value;
 
 template<typename T>
+struct is_duration : std::false_type
+{};
+
+template<typename Rep, typename Period>
+struct is_duration<std::chrono::duration<Rep, Period>> : std::true_type
+{};
+
+template<typename T>
+constexpr bool is_duration_v = is_duration<T>::value;
+
+template<typename T>
 struct is_ratio : std::false_type
 {};
 
@@ -149,6 +160,28 @@ constexpr auto frequency_cast(const frequency<Rep, Period>& f)
     return ToFrequency{static_cast<to_rep>(static_cast<common_rep>(f.count())
         * static_cast<common_rep>(common_period::num)
         / static_cast<common_rep>(common_period::den))};
+}
+
+/// Convert a \ref frequencypp::frequency to the equivalent duration type \p ToDuration
+///
+/// No implicit conversions are used.  Computations are done in the widest type available and
+/// converted, as if by \c static_cast, to the result type only when finished.
+///
+/// \tparam ToDuration \c std::chrono::duration type to convert to
+/// \tparam Rep arithmetic type representing the number of ticks for \p f
+/// \tparam Period ratio representing the tick period for \p f
+/// \param f frequency to convert
+/// \return \p f converted to a duration of type \p ToDuration
+template<typename ToDuration, typename Rep, typename Period>
+constexpr auto duration_cast(const frequency<Rep, Period>& f)
+    -> std::enable_if_t<detail::is_duration_v<ToDuration>, ToDuration>
+{
+    using to_rep = typename ToDuration::rep;
+    using to_period = typename ToDuration::period;
+    using common_rep = std::common_type_t<Rep, to_rep, std::intmax_t>;
+    using common_period = std::ratio_multiply<Period, to_period>;
+    return ToDuration{static_cast<to_rep>(static_cast<common_rep>(common_period::den)
+        / (static_cast<common_rep>(common_period::num) * static_cast<common_rep>(f.count())))};
 }
 
 /// Represents a temporal frequency
