@@ -94,10 +94,10 @@ TEST_CASE("operator<< respects stream precision", "[io]")
     auto take_string = [&os] { return ::take_string(os); };
 
     os.precision(2);
-    os << 1.25_PHz;
+    os << 1.24_PHz;
     REQUIRE(take_string() == "1.2PHz");
 
     os.precision(3);
-    os << 2.125_GHz;
+    os << 2.124_GHz;
     REQUIRE(take_string() == "2.12GHz");
 }
