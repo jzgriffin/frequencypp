@@ -33,7 +33,7 @@ root of the project:
 
 ```json
 {
-  "version": 1,
+  "version": 2,
   "cmakeMinimumRequired": {
     "major": 3,
     "minor": 14,
