@@ -631,6 +631,50 @@ constexpr auto operator*(const Rep1& lhs, const frequency<Rep2, Period>& rhs)
     return ct{lhs * ct{rhs}.count()};
 }
 
+/// Calculate the number of cycles at frequency \p rhs that occur in duration \p lhs
+///
+/// The calculation is done using the common type of \p Rep1 and \p Rep2.
+///
+/// \tparam Rep1 arithmetic type representing the number of ticks for \p lhs
+/// \tparam Period1 ratio representing the tick period for \p lhs
+/// \tparam Rep2 arithmetic type representing the number of ticks for \p rhs
+/// \tparam Period2 ratio representing the tick period for \p rhs
+/// \param lhs left-hand duration to multiply
+/// \param rhs right-hand frequency to multiply
+/// \return number of cycles at frequency \p rhs that occur in duration \p lhs
+template<typename Rep1, typename Period1, typename Rep2, typename Period2>
+constexpr auto operator*(const std::chrono::duration<Rep1, Period1>& lhs,
+    const frequency<Rep2, Period2>& rhs) -> std::common_type_t<Rep1, Rep2>
+{
+    using common_rep = std::common_type_t<Rep1, Rep2>;
+    using common_period = std::ratio_multiply<Period1, Period2>;
+    return (static_cast<common_rep>(common_period::num) * static_cast<common_rep>(lhs.count())
+               * static_cast<common_rep>(rhs.count()))
+        / static_cast<common_rep>(common_period::den);
+}
+
+/// Calculate the number of cycles at frequency \p lhs that occur in duration \p rhs
+///
+/// The calculation is done using the common type of \p Rep1 and \p Rep2.
+///
+/// \tparam Rep1 arithmetic type representing the number of ticks for \p lhs
+/// \tparam Period1 ratio representing the tick period for \p lhs
+/// \tparam Rep2 arithmetic type representing the number of ticks for \p rhs
+/// \tparam Period2 ratio representing the tick period for \p rhs
+/// \param lhs left-hand frequency to multiply
+/// \param rhs right-hand duration to multiply
+/// \return number of cycles at frequency \p lhs that occur in duration \p rhs
+template<typename Rep1, typename Period1, typename Rep2, typename Period2>
+constexpr auto operator*(const frequency<Rep1, Period1>& lhs,
+    const std::chrono::duration<Rep2, Period2>& rhs) -> std::common_type_t<Rep1, Rep2>
+{
+    using common_rep = std::common_type_t<Rep1, Rep2>;
+    using common_period = std::ratio_multiply<Period1, Period2>;
+    return (static_cast<common_rep>(common_period::num) * static_cast<common_rep>(lhs.count())
+               * static_cast<common_rep>(rhs.count()))
+        / static_cast<common_rep>(common_period::den);
+}
+
 /// Divide the tick count of frequency \p lhs by factor \p rhs
 ///
 /// The calculation is done using the common type of \p lhs and \p rhs.

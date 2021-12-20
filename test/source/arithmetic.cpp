@@ -400,6 +400,67 @@ TEST_CASE("multiplication does not modify arguments", "[arithmetic]")
     REQUIRE(f2 == 75_Hz);
 }
 
+// Multiplication with duration
+
+TEST_CASE("multiplication with duration converts to the correct type", "[arithmetic]")
+{
+    using namespace ::frequencypp;
+    using namespace std::chrono;
+
+    // Same representation
+    REQUIRE(std::is_same_v<decltype(frequency<int>{15} * duration<int>{5}), int>);
+    REQUIRE(std::is_same_v<decltype(duration<int>{5} * frequency<int>{5}), int>);
+    REQUIRE(std::is_same_v<decltype(frequency<double>{15.5} * duration<double>{4.5}), double>);
+    REQUIRE(std::is_same_v<decltype(duration<double>{4.5} * frequency<double>{15.5}), double>);
+
+    // Different representation
+    REQUIRE(std::is_same_v<decltype(frequency<std::int32_t>{15} * duration<std::int64_t>{5}),
+        std::int64_t>);
+    REQUIRE(std::is_same_v<decltype(duration<std::int32_t>{5} * frequency<std::int64_t>{15}),
+        std::int64_t>);
+    REQUIRE(std::is_same_v<decltype(frequency<std::uint32_t>{15} * duration<std::int64_t>{5}),
+        std::int64_t>);
+    REQUIRE(std::is_same_v<decltype(duration<std::uint32_t>{5} * frequency<std::int64_t>{15}),
+        std::int64_t>);
+    REQUIRE(std::is_same_v<decltype(frequency<float>{15.5F} * duration<double>{4.5}), double>);
+    REQUIRE(std::is_same_v<decltype(duration<float>{4.5F} * frequency<double>{15.5}), double>);
+    REQUIRE(std::is_same_v<decltype(frequency<std::int32_t>{15} * duration<float>{4.5F}), float>);
+    REQUIRE(std::is_same_v<decltype(duration<std::int32_t>{5} * frequency<float>{15.5F}), float>);
+}
+
+TEST_CASE("multiplication with duration computes the correct cycle count", "[arithmetic]")
+{
+    using namespace ::frequencypp;
+    using namespace std::chrono;
+
+    // Same representation, reciprocal period
+    REQUIRE(15_Hz * 5s == 75);
+    REQUIRE(15.5_Hz * 4.5s == Approx(69.75));
+    REQUIRE(frequency<int, std::ratio<1000, 1>>{15} * duration<int, std::ratio<1, 1000>>{5} == 75);
+
+    // Same representation, non-reciprocal period
+    REQUIRE(60_mHz * 5min == 18);
+    REQUIRE(15.5_Hz * 5.5ms == Approx(0.08525));
+
+    // Different representation, reciprocal period
+    REQUIRE(15_Hz * 4.5s == Approx(67.5));
+    REQUIRE(15.5_Hz * 3s == Approx(46.5));
+    REQUIRE(frequency<int, std::ratio<1000, 1>>{15} * duration<float, std::ratio<1, 1000>>{4.5F}
+        == Approx(67.5));
+
+    // Different representation, non-reciprocal period
+    REQUIRE(60_mHz * 2.5min == Approx(9.0));
+    REQUIRE(15.5_Hz * 5ms == Approx(0.0775));
+}
+
+TEST_CASE("multiplication with duration is commutative", "[arithmetic]")
+{
+    using namespace ::frequencypp;
+    using namespace std::chrono;
+
+    REQUIRE(15_mHz * 5min == 5min * 15_mHz);
+}
+
 // Division
 
 TEST_CASE("division converts to the correct type", "[arithmetic]")
