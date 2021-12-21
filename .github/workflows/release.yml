@@ -1,0 +1,30 @@
+name: Release
+
+on:
+  push:
+    tags:
+    - '*.*.*'
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Extract tag
+      run: echo "TAG_NAME=${GITHUB_REF#refs/tags/}" >> $GITHUB_ENV
+
+    - name: Configure
+      run: cmake --preset=release
+
+    - name: Package
+      run: cmake --build build/release --target package_source
+
+    - name: Release
+      uses: softprops/action-gh-release@v1
+      with:
+        files: |
+          build/release/frequencypp-${{ env.TAG_NAME }}.zip
+          build/release/frequencypp-${{ env.TAG_NAME }}.tar.gz
+        generate_release_notes: true

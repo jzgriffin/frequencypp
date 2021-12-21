@@ -51,5 +51,15 @@ install(EXPORT frequencyppTargets
 )
 
 if(PROJECT_IS_TOP_LEVEL)
+  set(CPACK_SOURCE_PACKAGE_FILE_NAME "${PROJECT_NAME}-${PROJECT_VERSION}")
+  set(CPACK_SOURCE_GENERATOR "ZIP;TGZ")
+  set(CPACK_SOURCE_IGNORE_FILES
+    \.git/
+    \.github/
+    \.gitignore
+    \.vs/
+    build/
+    ".*~$"
+  )
   include(CPack)
 endif()

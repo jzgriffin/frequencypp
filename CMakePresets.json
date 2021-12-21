@@ -128,6 +128,11 @@
     {
       "name": "ci-windows",
       "inherits": ["ci-build", "ci-win64", "dev-mode"]
+    },
+    {
+      "name": "release",
+      "binaryDir": "${sourceDir}/build/release",
+      "inherits": ["ci-unix"]
     }
   ]
 }
