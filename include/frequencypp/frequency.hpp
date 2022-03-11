@@ -155,6 +155,9 @@ constexpr auto frequency_cast(const frequency<Rep, Period>& f)
     using to_period = typename ToFrequency::period;
     using common_rep = std::common_type_t<Rep, to_rep, std::intmax_t>;
     using common_period = std::ratio_divide<Period, to_period>;
+    if (!f.count()) {
+        return ToFrequency{static_cast<to_rep>(0)};
+    }
     return ToFrequency{static_cast<to_rep>(static_cast<common_rep>(f.count())
         * static_cast<common_rep>(common_period::num)
         / static_cast<common_rep>(common_period::den))};
@@ -178,6 +181,9 @@ constexpr auto frequency_cast(const std::chrono::duration<Rep, Period>& d)
     using to_period = typename ToFrequency::period;
     using common_rep = std::common_type_t<Rep, to_rep, std::intmax_t>;
     using common_period = std::ratio_multiply<Period, to_period>;
+    if (!d.count()) {
+        return ToFrequency{static_cast<to_rep>(0)};
+    }
     return ToFrequency{static_cast<to_rep>(static_cast<common_rep>(common_period::den)
         / (static_cast<common_rep>(common_period::num) * static_cast<common_rep>(d.count())))};
 }
@@ -200,6 +206,9 @@ constexpr auto duration_cast(const frequency<Rep, Period>& f)
     using to_period = typename ToDuration::period;
     using common_rep = std::common_type_t<Rep, to_rep, std::intmax_t>;
     using common_period = std::ratio_multiply<Period, to_period>;
+    if (!f.count()) {
+        return ToDuration{static_cast<to_rep>(0)};
+    }
     return ToDuration{static_cast<to_rep>(static_cast<common_rep>(common_period::den)
         / (static_cast<common_rep>(common_period::num) * static_cast<common_rep>(f.count())))};
 }
