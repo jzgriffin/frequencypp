@@ -39,8 +39,7 @@ struct frequency;
 
 // Types needed to implement frequency, which may refer to the above forward declaration
 
-namespace frequencypp {
-namespace detail {
+namespace frequencypp::detail {
 
 template<typename T>
 struct is_frequency : std::false_type
@@ -75,8 +74,7 @@ struct is_ratio<std::ratio<Num, Den>> : std::true_type
 template<typename T>
 constexpr bool is_ratio_v = is_ratio<T>::value;
 
-} // namespace detail
-} // namespace frequencypp
+} // namespace frequencypp::detail
 
 /// Specialization of std::common_type for \ref frequencypp::frequency
 template<typename Rep1, typename Period1, typename Rep2, typename Period2>
@@ -242,6 +240,9 @@ public:
     /// Copy-construct the frequency
     frequency(const frequency&) = default;
 
+    /// Move-construct the frequency
+    frequency(frequency&&) noexcept = default;
+
     /// Construct the frequency with \p r ticks
     ///
     /// \tparam Rep2 arithmetic type representing the number of ticks
@@ -264,6 +265,9 @@ public:
         typename = std::enable_if_t<
             std::chrono::treat_as_floating_point_v<
                 rep> || (std::ratio_divide<Period2, period>::den == 1 && !std::chrono::treat_as_floating_point_v<Rep2>)>>
+    // Implicit conversions are desired for this constructor, as they enable arithmetic like
+    // -1_Hz + 2_KHz
+    // NOLINTNEXTLINE
     constexpr frequency(const frequency<Rep2, Period2>& f)
         : count_(frequency_cast<frequency>(f).count())
     {}
@@ -273,6 +277,9 @@ public:
 
     /// Copy-assign the frequency
     auto operator=(const frequency&) -> frequency& = default;
+
+    /// Move-assign the frequency
+    auto operator=(frequency&&) noexcept -> frequency& = default;
 
     /// Gets the zero-length frequency
     ///
@@ -313,7 +320,7 @@ public:
     /// Get the number of ticks
     ///
     /// \return number of ticks
-    constexpr auto count() const -> rep
+    [[nodiscard]] constexpr auto count() const -> rep
     {
         return count_;
     }
@@ -804,7 +811,7 @@ constexpr auto round(const frequency<Rep, Period>& f) -> std::enable_if_t<
     auto diff0 = f - t0;
     auto diff1 = t1 - f;
     if (diff0 == diff1) {
-        return (t0.count() & 1) == 0 ? t0 : t1;
+        return (t0.count() % 2) == 0 ? t0 : t1;
     }
     return diff0 < diff1 ? t0 : t1;
 }
