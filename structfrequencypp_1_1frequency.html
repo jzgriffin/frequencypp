@@ -130,6 +130,10 @@
               <span class="m-doc-wrap-bumper"><a href="#a29662210652f2df6efb754a16c69f119" class="m-doc-self">frequency</a>(</span><span class="m-doc-wrap">const <a href="structfrequencypp_1_1frequency.html" class="m-doc">frequency</a>&amp;) <span class="m-label m-flat m-info">defaulted</span></span>
             </dt>
             <dd>Copy-construct the frequency.</dd>
+            <dt id="a458a0118f9f5b4caacf2ed1302f40b84">
+              <span class="m-doc-wrap-bumper"><a href="#a458a0118f9f5b4caacf2ed1302f40b84" class="m-doc-self">frequency</a>(</span><span class="m-doc-wrap"><a href="structfrequencypp_1_1frequency.html" class="m-doc">frequency</a>&amp;&amp;) <span class="m-label m-flat m-info">defaulted</span> <span class="m-label m-flat m-success">noexcept</span></span>
+            </dt>
+            <dd>Move-construct the frequency.</dd>
             <dt>
               <div class="m-doc-template">template&lt;typename Rep2, typename = std::enable_if_t&lt;           std::is_convertible_v&lt;const Rep2&amp;,                <a href="structfrequencypp_1_1frequency.html#a2e7ea10a475ac224d5a991096ab969da" class="m-doc">rep</a>&gt;&amp;&amp; (std::chrono::treat_as_floating_point_v&lt;<a href="structfrequencypp_1_1frequency.html#a2e7ea10a475ac224d5a991096ab969da" class="m-doc">rep</a>&gt; || !std::chrono::treat_as_floating_point_v&lt;Rep2&gt;)&gt;&gt;</div>
               <span class="m-doc-wrap-bumper"><a href="#a28f97015cc4d611fa45acc1b66457583" class="m-doc">frequency</a>(</span><span class="m-doc-wrap">const Rep2&amp; r) <span class="m-label m-flat m-info">explicit</span>  <span class="m-label m-flat m-primary">constexpr</span></span>
@@ -153,6 +157,10 @@
               <span class="m-doc-wrap-bumper">auto <a href="#a53ee9e70beedeb356ebcc72b9dc3bfe8" class="m-doc-self">operator=</a>(</span><span class="m-doc-wrap">const <a href="structfrequencypp_1_1frequency.html" class="m-doc">frequency</a>&amp;) -&gt; frequency &amp; <span class="m-label m-flat m-info">defaulted</span></span>
             </dt>
             <dd>Copy-assign the frequency.</dd>
+            <dt id="a3d185330f9392a75c4e7251bb6b90c75">
+              <span class="m-doc-wrap-bumper">auto <a href="#a3d185330f9392a75c4e7251bb6b90c75" class="m-doc-self">operator=</a>(</span><span class="m-doc-wrap"><a href="structfrequencypp_1_1frequency.html" class="m-doc">frequency</a>&amp;&amp;) noexcept -&gt; frequency &amp; <span class="m-label m-flat m-info">defaulted</span></span>
+            </dt>
+            <dd>Move-assign the frequency.</dd>
             <dt>
               <span class="m-doc-wrap-bumper">auto <a href="#a3963aa36e14e3d3b600553b631a383c9" class="m-doc">count</a>(</span><span class="m-doc-wrap">) const -&gt; rep <span class="m-label m-flat m-primary">constexpr</span></span>
             </dt>
