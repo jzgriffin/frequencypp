@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 3.14)
 include(cmake/prelude.cmake)
 
 project(frequencypp
-    VERSION 0.1.0
+    VERSION 0.1.1
     DESCRIPTION "C++17 type for temporal frequency"
     HOMEPAGE_URL "https://github.com/nokurn/frequencypp"
     LANGUAGES NONE
